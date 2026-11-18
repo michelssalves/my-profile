@@ -44,7 +44,9 @@ const translations: Record<Language, Record<string, string>> = {
     'projects.dashboardrh':
       'Painel de indicadores de RH em PO-UI, consumindo dados do Protheus via REST.',
     'projects.invoice':
-      'Relatório de faturamento consolidado, com filtros e leitura facilitada para operação e gestão.',
+      'Notas de entrada com impostos retidos e SLA do 3-way à digitação, aberto dentro do Protheus e migrado de REST para WebChannel.',
+    'projects.ibscbs':
+      'Livro fiscal item a item com CBS e IBS da reforma tributária, CST e cClassTrib, com consulta otimizada no banco.',
     'projects.visit': 'Visitar site',
     'projects.demo': 'Demo',
     'projects.source': 'Código',
@@ -120,7 +122,9 @@ const translations: Record<Language, Record<string, string>> = {
     'projects.dashboardrh':
       'HR KPI dashboard built with PO-UI, consuming Protheus data through REST.',
     'projects.invoice':
-      'Consolidated billing report with filters and clearer reading for operations and management.',
+      'Incoming invoices with withheld taxes and 3-way-to-entry SLA, running inside Protheus and migrated from REST to WebChannel.',
+    'projects.ibscbs':
+      'Item-level tax ledger with Brazil’s new CBS and IBS taxes, CST and cClassTrib, backed by a tuned database query.',
     'projects.visit': 'Visit website',
     'projects.demo': 'Demo',
     'projects.source': 'Source',
@@ -196,7 +200,9 @@ const translations: Record<Language, Record<string, string>> = {
     'projects.dashboardrh':
       'Panel de indicadores de RRHH en PO-UI, consumiendo datos de Protheus vía REST.',
     'projects.invoice':
-      'Reporte de facturación consolidado, con filtros y lectura más clara para operación y gestión.',
+      'Facturas de entrada con impuestos retenidos y SLA del 3-way a la digitación, dentro de Protheus y migrado de REST a WebChannel.',
+    'projects.ibscbs':
+      'Libro fiscal ítem por ítem con CBS e IBS de la reforma tributaria brasileña, CST y cClassTrib, con consulta optimizada.',
     'projects.visit': 'Visitar sitio',
     'projects.demo': 'Demo',
     'projects.source': 'Código',

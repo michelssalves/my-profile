@@ -71,13 +71,23 @@ export const PROJECTS: Project[] = [
   },
   {
     id: 'invoice',
-    image: 'projects/invoice.webp',
-    name: 'Invoice Report',
+    image: 'projects/invoice-v2.webp',
+    name: 'Invoice Report v2',
     category: 'erp',
-    domain: 'poui-invoice-report',
-    url: 'https://michelssalves.github.io/poui-invoice-report/#/relatorio-rcap',
-    repo: 'https://github.com/michelssalves/poui-invoice-report',
-    stack: ['Angular', 'PO-UI', 'Protheus REST']
+    domain: 'poui-invoice-report-v2',
+    url: 'https://michelssalves.github.io/poui-invoice-report-v2/#/relatorio-rcap',
+    repo: 'https://github.com/michelssalves/poui-invoice-report-v2',
+    stack: ['Angular', 'PO-UI', 'WebChannel']
+  },
+  {
+    id: 'ibscbs',
+    image: 'projects/livro-ibs-cbs.webp',
+    name: 'Livro Fiscal IBS/CBS',
+    category: 'erp',
+    domain: 'livro-ibs-cbs',
+    url: 'https://michelssalves.github.io/livro-ibs-cbs/',
+    repo: 'https://github.com/michelssalves/livro-ibs-cbs',
+    stack: ['Angular', 'PO-UI', 'WebChannel', 'TLPP']
   }
 ];
 
