@@ -5,42 +5,60 @@
   </header>
 
   @for (group of groups; track group.category) {
-    <h3 class="group-title">{{ i18n.t(group.titleKey) }}</h3>
-    <div class="bento projects" [class.erp]="group.category === 'erp'">
-      @for (project of group.items; track project.id; let first = $first) {
-        <article class="tile project" [class.featured]="first && group.category === 'client'">
-          <div class="preview" [attr.data-project]="project.id" aria-hidden="true">
-            <div class="browser-bar">
-              <span></span><span></span><span></span>
-              <em>{{ project.domain }}</em>
+    <section
+      class="group"
+      [class.group-erp]="group.category === 'erp'"
+      [class.group-client]="group.category === 'client'"
+      [attr.aria-labelledby]="'group-' + group.category"
+    >
+      <header class="group-head">
+        <span class="group-badge">{{ i18n.t(group.badgeKey) }}</span>
+        <div class="group-text">
+          <h3 [id]="'group-' + group.category">
+            {{ i18n.t(group.titleKey) }}
+            <span class="group-count">{{ group.items.length }}</span>
+          </h3>
+          <p>{{ i18n.t(group.descKey) }}</p>
+        </div>
+      </header>
+
+      <div class="bento projects" [class.erp]="group.category === 'erp'">
+        @for (project of group.items; track project.id; let first = $first) {
+          <article class="tile project" [class.featured]="first && group.category === 'client'">
+            <div class="preview" [attr.data-project]="project.id" aria-hidden="true">
+              <div class="browser-bar">
+                <span></span><span></span><span></span>
+                <em>{{ project.domain }}</em>
+                <b class="preview-tag">{{ i18n.t(group.tagKey) }}</b>
+              </div>
+              <div class="preview-body">
+                <img [src]="project.image" alt="" width="1200" height="750" loading="lazy" decoding="async" />
+              </div>
             </div>
-            <div class="preview-body">
-              <img [src]="project.image" alt="" width="1200" height="750" loading="lazy" decoding="async" />
-            </div>
-          </div>
-          <div class="project-body">
-            <h4>{{ project.name }}</h4>
-            <p>{{ i18n.t('projects.' + project.id) }}</p>
-            <ul class="chips" [attr.aria-label]="i18n.t('stack.title')">
-              @for (tech of project.stack; track tech) {
-                <li>{{ tech }}</li>
-              }
-            </ul>
-            <div class="actions">
-              <a class="btn primary small" [href]="project.url" target="_blank" rel="noopener">
-                {{ i18n.t(project.repo ? 'projects.demo' : 'projects.visit') }}
-                <span class="sr-only">— {{ project.name }} ({{ i18n.t('projects.newTab') }})</span>
-              </a>
-              @if (project.repo) {
-                <a class="btn secondary small" [href]="project.repo" target="_blank" rel="noopener">
-                  {{ i18n.t('projects.source') }}
+            <div class="project-body">
+              <h4>{{ project.name }}</h4>
+              <p>{{ i18n.t('projects.' + project.id) }}</p>
+              <ul class="chips" [attr.aria-label]="i18n.t('stack.title')">
+                @for (tech of project.stack; track tech) {
+                  <li>{{ tech }}</li>
+                }
+              </ul>
+              <div class="actions">
+                <a class="btn primary small" [href]="project.url" target="_blank" rel="noopener">
+                  {{ i18n.t(project.repo ? 'projects.demo' : 'projects.visit') }}
                   <span class="sr-only">— {{ project.name }} ({{ i18n.t('projects.newTab') }})</span>
                 </a>
-              }
+                @if (project.repo) {
+                  <a class="btn secondary small" [href]="project.repo" target="_blank" rel="noopener">
+                    {{ i18n.t('projects.source') }}
+                    <span class="sr-only">— {{ project.name }} ({{ i18n.t('projects.newTab') }})</span>
+                  </a>
+                }
+              </div>
             </div>
-          </div>
-        </article>
-      }
-    </div>
+          </article>
+        }
+      </div>
+    </section>
   }
 </section>

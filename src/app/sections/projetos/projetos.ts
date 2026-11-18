@@ -2,6 +2,15 @@ import { Component, inject } from '@angular/core';
 import { LanguageService } from '../../shared/language.service';
 import { PROJECTS, ProjectCategory } from '../../shared/portfolio-data';
 
+interface ProjectGroup {
+  category: ProjectCategory;
+  badgeKey: string;
+  titleKey: string;
+  descKey: string;
+  tagKey: string;
+  items: typeof PROJECTS;
+}
+
 @Component({
   selector: 'app-projetos',
   imports: [],
@@ -11,16 +20,23 @@ import { PROJECTS, ProjectCategory } from '../../shared/portfolio-data';
 export class Projetos {
   readonly i18n = inject(LanguageService);
 
-  readonly groups: { category: ProjectCategory; titleKey: string; items: typeof PROJECTS }[] = [
-    {
-      category: 'client',
-      titleKey: 'projects.group.client',
-      items: PROJECTS.filter((project) => project.category === 'client')
-    },
+  // Protheus primeiro: é o foco profissional; os sites para clientes vêm depois, em bloco separado.
+  readonly groups: ProjectGroup[] = [
     {
       category: 'erp',
+      badgeKey: 'projects.group.erp.badge',
       titleKey: 'projects.group.erp',
+      descKey: 'projects.group.erp.desc',
+      tagKey: 'projects.tag.demo',
       items: PROJECTS.filter((project) => project.category === 'erp')
+    },
+    {
+      category: 'client',
+      badgeKey: 'projects.group.client.badge',
+      titleKey: 'projects.group.client',
+      descKey: 'projects.group.client.desc',
+      tagKey: 'projects.tag.live',
+      items: PROJECTS.filter((project) => project.category === 'client')
     }
   ];
 }

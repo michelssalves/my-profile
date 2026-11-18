@@ -1,16 +1,106 @@
 :host {
   display: block;
+  /* Cor de cada grupo: Protheus em verde-azulado, sites no azul do tema. */
+  --erp: #3fd1bb;
+  --erp-soft: rgba(63, 209, 187, 0.12);
+  --site: var(--accent);
+  --site-soft: var(--accent-soft);
 }
 
-.group-title {
-  margin-top: 10px;
+:host-context(body.theme-light) {
+  --erp: #0b7a6b;
+  --erp-soft: rgba(11, 122, 107, 0.09);
+}
+
+/* Cada grupo é um bloco próprio: borda e selo na cor do grupo, e espaço grande entre os dois. */
+.group {
+  --group: var(--site);
+  --group-soft: var(--site-soft);
+  margin-top: 18px;
+  padding: 18px;
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--group);
+  border-radius: var(--radius);
+  background: linear-gradient(180deg, var(--group-soft), transparent 220px);
+}
+
+.group + .group {
+  margin-top: 44px;
+}
+
+.group-erp {
+  --group: var(--erp);
+  --group-soft: var(--erp-soft);
+}
+
+.group-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 10px 16px;
+  margin-bottom: 16px;
   padding: 0 4px;
+}
+
+.group-badge {
+  flex: none;
+  padding: 5px 12px;
+  border: 1px solid var(--group);
+  border-radius: 999px;
+  color: var(--group);
   font-family: 'Plus Jakarta Sans', 'Segoe UI', sans-serif;
-  font-size: 0.78rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
+}
+
+.group-text {
+  flex: 1 1 320px;
+  min-width: 0;
+}
+
+.group-text h3 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 4px;
+  font-size: 1.3rem;
+}
+
+.group-count {
+  padding: 1px 9px;
+  border-radius: 999px;
+  background: var(--group-soft);
+  color: var(--group);
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.group-text p {
+  margin: 0;
   color: var(--muted);
+}
+
+/* Marca na barra do navegador do card: "dados fictícios" no Protheus, "no ar" nos sites. */
+.preview-tag {
+  flex: none;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.35);
+  color: #ffffff;
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
+.group-erp .preview-tag {
+  background: rgba(11, 122, 107, 0.85);
+}
+
+.group-client .preview-tag {
+  background: rgba(31, 95, 191, 0.85);
 }
 
 .project {
@@ -68,6 +158,11 @@
 .preview[data-project='invoice'] {
   --tone-a: #0f7a6a;
   --tone-b: #0a2f2a;
+}
+
+.preview[data-project='ibscbs'] {
+  --tone-a: #8a5a1c;
+  --tone-b: #2e1f0b;
 }
 
 .browser-bar {
@@ -156,7 +251,8 @@
 }
 
 @media (min-width: 1024px) {
-  .projects:not(.erp) {
+  /* Protheus também em 3 colunas: os três cards lado a lado, sem um sobrando sozinho. */
+  .projects {
     grid-template-columns: repeat(3, 1fr);
   }
 

@@ -1,4 +1,4 @@
-﻿import { Injectable, signal } from '@angular/core';
+import { Injectable, signal } from '@angular/core';
 
 export type Language = 'pt' | 'en' | 'es';
 
@@ -30,9 +30,15 @@ const translations: Record<Language, Record<string, string>> = {
     'stack.back': 'Back-end',
     'stack.erp': 'ERP',
     'projects.title': 'Projetos',
-    'projects.lead': 'Uma seleção de trabalhos publicados: sites entregues para clientes e telas web ligadas ao Protheus.',
+    'projects.lead': 'Telas web ligadas ao ERP TOTVS Protheus e, em seguida, sites entregues para clientes.',
     'projects.group.client': 'Sites para clientes',
-    'projects.group.erp': 'Sistemas e dashboards ERP',
+    'projects.group.client.badge': 'Sites publicados',
+    'projects.group.client.desc': 'Sites institucionais em produção, entregues do layout ao deploy.',
+    'projects.tag.live': 'no ar',
+    'projects.group.erp': 'Telas web para o Protheus',
+    'projects.group.erp.badge': 'ERP TOTVS Protheus',
+    'projects.group.erp.desc': 'Relatórios e dashboards em Angular + PO-UI que rodam dentro do Protheus. As demonstrações usam dados fictícios.',
+    'projects.tag.demo': 'dados fictícios',
     'projects.memorial':
       'Site institucional com planos, serviços, galeria do crematório e atendimento direto pelo WhatsApp.',
     'projects.santoanjo':
@@ -48,7 +54,7 @@ const translations: Record<Language, Record<string, string>> = {
     'projects.ibscbs':
       'Livro fiscal item a item com CBS e IBS da reforma tributária, CST e cClassTrib, com consulta otimizada no banco.',
     'projects.visit': 'Visitar site',
-    'projects.demo': 'Demo',
+    'projects.demo': 'Ver demonstração',
     'projects.source': 'Código',
     'projects.newTab': 'abre em nova aba',
     'exp.title': 'Experiência',
@@ -108,9 +114,15 @@ const translations: Record<Language, Record<string, string>> = {
     'stack.back': 'Back-end',
     'stack.erp': 'ERP',
     'projects.title': 'Projects',
-    'projects.lead': 'A selection of published work: websites delivered to clients and web screens connected to Protheus.',
+    'projects.lead': 'Web screens connected to the TOTVS Protheus ERP, followed by websites delivered to clients.',
     'projects.group.client': 'Client websites',
-    'projects.group.erp': 'ERP systems and dashboards',
+    'projects.group.client.badge': 'Live websites',
+    'projects.group.client.desc': 'Company websites in production, delivered from layout to deploy.',
+    'projects.tag.live': 'live',
+    'projects.group.erp': 'Web screens for Protheus',
+    'projects.group.erp.badge': 'TOTVS Protheus ERP',
+    'projects.group.erp.desc': 'Angular + PO-UI reports and dashboards that run inside Protheus. Demos use fictitious data.',
+    'projects.tag.demo': 'fictitious data',
     'projects.memorial':
       'Business website with plans, services, crematorium gallery and direct WhatsApp support.',
     'projects.santoanjo':
@@ -126,7 +138,7 @@ const translations: Record<Language, Record<string, string>> = {
     'projects.ibscbs':
       'Item-level tax ledger with Brazil’s new CBS and IBS taxes, CST and cClassTrib, backed by a tuned database query.',
     'projects.visit': 'Visit website',
-    'projects.demo': 'Demo',
+    'projects.demo': 'View demo',
     'projects.source': 'Source',
     'projects.newTab': 'opens in a new tab',
     'exp.title': 'Experience',
@@ -186,9 +198,15 @@ const translations: Record<Language, Record<string, string>> = {
     'stack.back': 'Back-end',
     'stack.erp': 'ERP',
     'projects.title': 'Proyectos',
-    'projects.lead': 'Una selección de trabajos publicados: sitios entregados a clientes y pantallas web conectadas a Protheus.',
+    'projects.lead': 'Pantallas web conectadas al ERP TOTVS Protheus y, a continuación, sitios entregados a clientes.',
     'projects.group.client': 'Sitios para clientes',
-    'projects.group.erp': 'Sistemas y dashboards ERP',
+    'projects.group.client.badge': 'Sitios publicados',
+    'projects.group.client.desc': 'Sitios institucionales en producción, entregados del diseño al deploy.',
+    'projects.tag.live': 'en línea',
+    'projects.group.erp': 'Pantallas web para Protheus',
+    'projects.group.erp.badge': 'ERP TOTVS Protheus',
+    'projects.group.erp.desc': 'Reportes y dashboards en Angular + PO-UI que se ejecutan dentro de Protheus. Las demos usan datos ficticios.',
+    'projects.tag.demo': 'datos ficticios',
     'projects.memorial':
       'Sitio institucional con planes, servicios, galería del crematorio y atención directa por WhatsApp.',
     'projects.santoanjo':
@@ -204,7 +222,7 @@ const translations: Record<Language, Record<string, string>> = {
     'projects.ibscbs':
       'Libro fiscal ítem por ítem con CBS e IBS de la reforma tributaria brasileña, CST y cClassTrib, con consulta optimizada.',
     'projects.visit': 'Visitar sitio',
-    'projects.demo': 'Demo',
+    'projects.demo': 'Ver demo',
     'projects.source': 'Código',
     'projects.newTab': 'abre en una nueva pestaña',
     'exp.title': 'Experiencia',
