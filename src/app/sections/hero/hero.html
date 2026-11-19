@@ -10,7 +10,21 @@
     </h1>
     <div class="actions">
       <a class="btn primary" href="#projetos">{{ i18n.t('hero.projects') }}</a>
-      <a class="btn secondary" [href]="cvLink()" target="_blank" rel="noopener">{{ i18n.t('hero.cv') }}</a>
+      <a
+        class="btn secondary icon-only"
+        [href]="cvLink()"
+        target="_blank"
+        rel="noopener"
+        [title]="i18n.t('hero.cv')"
+        [attr.aria-label]="i18n.t('hero.cv')"
+      >
+        <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 3v12" />
+          <path d="m7 10 5 5 5-5" />
+          <path d="M5 21h14" />
+        </svg>
+      </a>
+      <a class="btn secondary" href="#contato">{{ i18n.t('nav.contact') }}</a>
     </div>
   </article>
 
@@ -23,42 +37,4 @@
       <strong>Michel Alves</strong>
     </figcaption>
   </figure>
-
-  <article class="tile stack">
-    <h2 class="tile-label">{{ i18n.t('stack.title') }}</h2>
-    @for (group of stack; track group.labelKey) {
-      <div class="stack-group">
-        <h3>{{ i18n.t(group.labelKey) }}</h3>
-        <ul>
-          @for (item of group.items; track item.name) {
-            <li>
-              <img [src]="item.icon" alt="" width="16" height="16" [class.invert-dark]="item.invertOnDark" />
-              <span>{{ item.name }}</span>
-            </li>
-          }
-        </ul>
-      </div>
-    }
-  </article>
-
-  <article class="tile available">
-    <h2 class="tile-label"><span class="dot" aria-hidden="true"></span>{{ i18n.t('hero.availableTitle') }}</h2>
-    <p>{{ i18n.t('hero.available') }}</p>
-    <a class="btn ghost" href="#contato">{{ i18n.t('hero.talk') }} <span aria-hidden="true">→</span></a>
-    <h2 class="sr-only" id="lang-label">{{ i18n.t('hero.language') }}</h2>
-    <div class="lang-switch" role="group" aria-labelledby="lang-label">
-      @for (option of languages; track option.code) {
-        <button
-          type="button"
-          (click)="setLanguage(option.code)"
-          [class.active]="i18n.lang() === option.code"
-          [attr.aria-pressed]="i18n.lang() === option.code"
-          [attr.aria-label]="option.label"
-        >
-          <img [src]="option.flag" alt="" width="22" height="16" />
-          <span>{{ option.short }}</span>
-        </button>
-      }
-    </div>
-  </article>
 </section>

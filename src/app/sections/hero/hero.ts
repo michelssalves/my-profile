@@ -1,6 +1,5 @@
 ﻿import { Component, DestroyRef, computed, effect, inject, signal } from '@angular/core';
-import { Language, LanguageService } from '../../shared/language.service';
-import { STACK } from '../../shared/portfolio-data';
+import { LanguageService } from '../../shared/language.service';
 
 @Component({
   selector: 'app-hero',
@@ -10,16 +9,9 @@ import { STACK } from '../../shared/portfolio-data';
 })
 export class Hero {
   readonly i18n = inject(LanguageService);
-  readonly stack = STACK;
   readonly typedEyebrow = signal('');
 
   private typingTimer: ReturnType<typeof setInterval> | undefined;
-
-  readonly languages: { code: Language; short: string; label: string; flag: string }[] = [
-    { code: 'pt', short: 'PT', label: 'Português', flag: 'flags/br.svg' },
-    { code: 'en', short: 'EN', label: 'English', flag: 'flags/us.svg' },
-    { code: 'es', short: 'ES', label: 'Español', flag: 'flags/es.svg' }
-  ];
 
   readonly cvLink = computed(() => {
     const lang = this.i18n.lang();
@@ -32,10 +24,6 @@ export class Hero {
     // Digita o eyebrow letra a letra e recomeca ao trocar o idioma (inspirado no Rhuan Bello)
     effect(() => this.typeEyebrow(this.i18n.t('hero.eyebrow')));
     inject(DestroyRef).onDestroy(() => clearInterval(this.typingTimer));
-  }
-
-  setLanguage(language: Language): void {
-    this.i18n.setLanguage(language);
   }
 
   private typeEyebrow(text: string): void {

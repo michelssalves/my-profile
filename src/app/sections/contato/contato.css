@@ -70,15 +70,11 @@
 }
 
 @media (min-width: 720px) {
-  /* Título e botão do WhatsApp na mesma linha; os contatos ocupam a linha de baixo inteira. */
   .contact {
-    grid-template-columns: 1fr auto;
-    align-items: center;
     padding: 40px 48px;
   }
 
   .contact-links {
-    grid-column: 1 / -1;
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 }

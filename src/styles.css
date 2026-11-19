@@ -73,6 +73,8 @@ body.theme-light {
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 88px;
+  /* A faixa da stack passa da largura da tela: corta sem criar rolagem lateral */
+  overflow-x: clip;
 }
 
 h1,

@@ -3,12 +3,6 @@
     <div class="contact-text">
       <h2 id="contact-title">{{ i18n.t('contact.title') }}</h2>
     </div>
-    <div class="actions">
-      <a class="btn whats" [href]="whatsappLink()" target="_blank" rel="noopener">
-        <img src="icons/whatsapp-white.svg" alt="" width="20" height="20" />
-        WhatsApp
-      </a>
-    </div>
     <ul class="contact-links">
       <li><span><img src="icons/whatsapp.svg" alt="" width="14" height="14" />WhatsApp</span><a [href]="whatsappLink()" target="_blank" rel="noopener">{{ contact.phoneDisplay }}</a></li>
       <li><span><img src="icons/gmail.svg" alt="" width="14" height="11" />E-mail</span><a [href]="emailLink()">{{ contact.email }}</a></li>

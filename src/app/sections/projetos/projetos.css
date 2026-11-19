@@ -164,6 +164,11 @@
   --tone-b: #2e1f0b;
 }
 
+.preview[data-project='estoque'] {
+  --tone-a: #6d4bd8;
+  --tone-b: #241a4a;
+}
+
 .preview[data-project='aprovacoes'] {
   --tone-a: #23489f;
   --tone-b: #0f1f45;
@@ -247,5 +252,20 @@
   /* Os dois grupos em 2 x 2: cards do mesmo tamanho, print inteiro em 16:10. */
   .projects {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Número ímpar de cards: o último ocupa a linha inteira, com o print ao lado do texto. */
+  .project:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+    flex-direction: row;
+    align-items: stretch;
+  }
+
+  .project:last-child:nth-child(odd) .preview {
+    flex: 0 0 50%;
+  }
+
+  .project:last-child:nth-child(odd) .project-body {
+    padding: 10px 10px 10px 6px;
   }
 }

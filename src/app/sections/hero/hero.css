@@ -27,6 +27,13 @@
   white-space: nowrap;
 }
 
+/* Curriculo so com o icone de download: quadrado, sem esticar. */
+.intro .actions .btn.icon-only {
+  flex: none;
+  width: 44px;
+  padding: 0;
+}
+
 .eyebrow {
   min-height: 1.3em;
 }
@@ -106,120 +113,6 @@
   color: #f4f7fc;
 }
 
-.lang-switch {
-  display: flex;
-  gap: 6px;
-  margin-top: auto;
-}
-
-.lang-switch button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  min-height: 32px;
-  padding: 0 10px;
-  border: 1px solid var(--border);
-  border-radius: 999px;
-  background: var(--tile-2);
-  color: var(--ink);
-  font: inherit;
-  font-weight: 700;
-  font-size: 0.78rem;
-  cursor: pointer;
-  transition: border-color 0.2s ease, background-color 0.2s ease;
-}
-
-.lang-switch img {
-  border-radius: 3px;
-}
-
-.lang-switch button.active {
-  border-color: var(--accent);
-  background: var(--accent-soft);
-  color: var(--accent);
-}
-
-@media (hover: hover) {
-  .lang-switch button:hover {
-    border-color: var(--border-strong);
-  }
-}
-
-.stack {
-  display: grid;
-  gap: 10px;
-  align-content: center;
-}
-
-.stack .tile-label {
-  margin-bottom: 0;
-}
-
-.stack-group {
-  display: grid;
-  gap: 6px;
-}
-
-.stack-group h3 {
-  font-family: inherit;
-  font-size: 0.85rem;
-  color: var(--ink);
-}
-
-.stack-group ul {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.stack-group li {
-  position: relative;
-  overflow: hidden;
-  transition: transform 0.2s ease, border-color 0.2s ease;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 5px 11px 5px 8px;
-  border: 1px solid var(--border);
-  border-radius: 999px;
-  background: var(--tile-2);
-  font-size: 0.82rem;
-  font-weight: 600;
-}
-
-.stack-group li img {
-  flex: none;
-  width: 16px;
-  height: 16px;
-  object-fit: contain;
-}
-
-/* Chip sobe e ganha sublinhado em gradiente (inspirado no Rhuan Bello) */
-.stack-group li::after {
-  content: '';
-  position: absolute;
-  inset: auto 0 0;
-  height: 2px;
-  background: linear-gradient(90deg, var(--grad-1), var(--grad-2), var(--grad-3));
-  transform: scaleX(0);
-  transition: transform 0.25s ease;
-}
-
-@media (hover: hover) {
-  .stack-group li:hover {
-    transform: translateY(-2px);
-    border-color: color-mix(in srgb, var(--accent) 40%, transparent);
-  }
-
-  .stack-group li:hover::after {
-    transform: scaleX(1);
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
   .photo::before,
   .caret {
@@ -227,89 +120,34 @@
   }
 }
 
-.available {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 10px;
-}
-
-.available .tile-label {
-  margin-bottom: 0;
-  color: var(--success);
-}
-
-.available p {
-  color: var(--ink);
-}
-
-.dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--success);
-  box-shadow: 0 0 0 4px color-mix(in srgb, var(--success) 22%, transparent);
-}
-
+/* Topo: texto e foto lado a lado a partir de 720px; no celular, um embaixo do outro. */
 @media (min-width: 720px) {
-  .stack-group {
-    grid-template-columns: 82px 1fr;
-    align-items: center;
-    gap: 8px;
-  }
-
-  .intro .actions .btn {
-    flex: none;
-    padding: 0 18px;
-  }
-
-  /* dense: o card Disponível sobe para o lado da foto em vez de deixar meia linha vazia. */
   .bento {
-    grid-template-columns: repeat(2, 1fr);
-    grid-auto-flow: dense;
+    grid-template-columns: 2fr 1fr;
   }
 
   .intro {
-    grid-column: 1 / -1;
     padding: 40px;
   }
 
   .photo {
     aspect-ratio: auto;
-    min-height: 320px;
+    min-height: 300px;
   }
 
-  .stack {
-    grid-column: 1 / -1;
+  .intro .actions .btn:not(.icon-only) {
+    flex: none;
+    padding: 0 18px;
   }
 }
 
 @media (min-width: 1024px) {
   .bento {
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: auto auto;
+    grid-template-columns: 3fr 1fr;
   }
 
   .intro {
-    grid-column: 1 / 4;
-    grid-row: 1;
     min-height: 340px;
     padding: 44px 48px;
-  }
-
-  .photo {
-    grid-column: 4;
-    grid-row: 1;
-    min-height: 0;
-  }
-
-  .stack {
-    grid-column: 1 / 4;
-    grid-row: 2;
-  }
-
-  .available {
-    grid-column: 4;
-    grid-row: 2;
   }
 }

@@ -85,31 +85,83 @@
   min-width: 0;
 }
 
-.topbar nav {
-  display: flex;
-  min-width: 0;
-  overflow-x: auto;
-  scrollbar-width: none;
-}
-
-.topbar nav a {
+.status {
   display: inline-flex;
   align-items: center;
-  min-height: 44px;
-  padding: 0 6px;
+  gap: 7px;
+  margin-right: auto;
+  padding: 5px 11px 5px 9px;
+  border: 1px solid color-mix(in srgb, var(--success) 35%, transparent);
   border-radius: 999px;
-  color: var(--muted);
-  font-size: 0.82rem;
-  font-weight: 700;
-  text-decoration: none;
+  background: color-mix(in srgb, var(--success) 10%, transparent);
+  color: var(--success);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
   white-space: nowrap;
-  transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+/* Bolinha verde piscando com um anel que se expande */
+.status-dot {
+  position: relative;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--success);
+  animation: status-blink 1.4s ease-in-out infinite;
+}
+
+.status-dot::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: var(--success);
+  animation: status-ring 1.4s ease-out infinite;
+}
+
+@keyframes status-blink {
+  50% { opacity: 0.35; }
+}
+
+@keyframes status-ring {
+  0% { transform: scale(1); opacity: 0.7; }
+  100% { transform: scale(2.8); opacity: 0; }
+}
+
+.lang-switch {
+  display: flex;
+  gap: 2px;
+}
+
+.lang-switch button {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border: 1px solid transparent;
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+  opacity: 0.55;
+  transition: opacity 0.2s ease, border-color 0.2s ease;
+}
+
+.lang-switch button.active {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+  opacity: 1;
+}
+
+.lang-switch img {
+  border-radius: 3px;
 }
 
 .theme-toggle {
   flex: none;
-  width: 44px;
-  height: 44px;
+  width: 40px;
+  height: 40px;
   border: 1px solid var(--border);
   border-radius: 50%;
   background: var(--tile-2);
@@ -119,9 +171,8 @@
 }
 
 @media (hover: hover) {
-  .topbar nav a:hover {
-    color: var(--accent);
-    background: var(--accent-soft);
+  .lang-switch button:hover {
+    opacity: 1;
   }
 
   .theme-toggle:hover {
@@ -142,9 +193,14 @@ main {
     display: flex;
   }
 
-  .topbar nav a {
-    padding: 0 14px;
-    font-size: 0.88rem;
+  .theme-toggle {
+    width: 44px;
+    height: 44px;
+  }
+
+  .lang-switch button {
+    width: 44px;
+    height: 44px;
   }
 }
 
@@ -156,6 +212,70 @@ main {
   main {
     padding: 24px 0 56px;
     gap: 72px;
+  }
+}
+
+/* Faixa da stack: inclinada, com borda em gradiente e duas linhas em sentidos opostos */
+.marquee {
+  display: grid;
+  gap: 12px;
+  /* Sai do limite do conteúdo e vai de borda a borda (com folga para a inclinação) */
+  margin: -28px calc(50% - 50vw - 40px) 0;
+  padding: 18px 40px;
+  overflow: hidden;
+  transform: rotate(-1.5deg);
+  border-block: 2px solid transparent;
+  border-image: linear-gradient(90deg, var(--grad-1), var(--grad-2), var(--grad-3)) 1;
+  background: linear-gradient(90deg, color-mix(in srgb, var(--grad-1) 14%, transparent), color-mix(in srgb, var(--grad-3) 14%, transparent));
+}
+
+.marquee-track {
+  display: flex;
+  gap: 14px;
+  width: max-content;
+  animation: marquee 22s linear infinite;
+}
+
+.marquee-track.reverse {
+  animation-direction: reverse;
+  animation-duration: 26s;
+}
+
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+.marquee-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 18px 8px 12px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--tile);
+  color: var(--ink);
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  white-space: nowrap;
+  box-shadow: 0 0 18px color-mix(in srgb, var(--grad-2) 18%, transparent);
+}
+
+.marquee-item img {
+  width: 26px;
+  height: 26px;
+  object-fit: contain;
+}
+
+@keyframes marquee {
+  to { transform: translateX(calc(-50% - 7px)); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track,
+  .status-dot,
+  .status-dot::after {
+    animation: none;
   }
 }
 

@@ -11,12 +11,22 @@
       <small>{{ i18n.t('brand.role') }}</small>
     </span>
   </a>
+  <span class="status"><span class="status-dot" aria-hidden="true"></span>{{ i18n.t('hero.availableTitle') }}</span>
   <div class="topbar-actions">
-    <nav [attr.aria-label]="i18n.t('nav.label')">
-      <a href="#projetos">{{ i18n.t('nav.projects') }}</a>
-      <a href="#experiencia">{{ i18n.t('nav.experience') }}</a>
-      <a href="#contato">{{ i18n.t('nav.contact') }}</a>
-    </nav>
+    <div class="lang-switch" role="group" [attr.aria-label]="i18n.t('hero.language')">
+      @for (option of languages; track option.code) {
+        <button
+          type="button"
+          (click)="i18n.setLanguage(option.code)"
+          [class.active]="i18n.lang() === option.code"
+          [attr.aria-pressed]="i18n.lang() === option.code"
+          [attr.aria-label]="option.label"
+          [title]="option.label"
+        >
+          <img [src]="option.flag" alt="" width="22" height="16" />
+        </button>
+      }
+    </div>
     <button
       class="theme-toggle"
       type="button"
@@ -31,6 +41,19 @@
 
 <main id="conteudo">
   <app-hero></app-hero>
+  <!-- Faixa da stack: duas linhas correndo em sentidos opostos, numa faixa levemente inclinada -->
+  <div class="marquee" aria-hidden="true">
+    @for (row of marqueeRows; track $index; let odd = $odd) {
+      <div class="marquee-track" [class.reverse]="odd">
+        @for (item of row; track $index) {
+          <span class="marquee-item">
+            <img [src]="item.icon" alt="" width="26" height="26" [class.invert-dark]="item.invertOnDark" />
+            {{ item.name }}
+          </span>
+        }
+      </div>
+    }
+  </div>
   <app-projetos></app-projetos>
   <app-sobre></app-sobre>
   <app-contato></app-contato>

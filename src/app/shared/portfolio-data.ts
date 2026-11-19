@@ -98,6 +98,16 @@ export const PROJECTS: Project[] = [
     url: 'https://michelssalves.github.io/aprovacoes-pendentes/',
     repo: 'https://github.com/michelssalves/aprovacoes-pendentes',
     stack: ['Angular', 'PO-UI', 'WebChannel', 'Charts']
+  },
+  {
+    id: 'estoque',
+    image: 'projects/stock-control-vue.webp',
+    name: 'Custos de Estoque',
+    category: 'erp',
+    domain: 'stock-contol-vue',
+    url: 'https://michelssalves.github.io/stock-contol-vue/',
+    repo: 'https://github.com/michelssalves/stock-contol-vue',
+    stack: ['Vue', 'Vite', 'Charts']
   }
 ];
 
