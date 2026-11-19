@@ -60,6 +60,15 @@ export const PROJECTS: Project[] = [
     stack: ['PHP', 'MySQL', 'JavaScript']
   },
   {
+    id: 'zubartez',
+    image: 'projects/zubartez.webp',
+    name: 'Zubartez',
+    category: 'client',
+    domain: 'zubartez.com.br',
+    url: 'https://zubartez.com.br',
+    stack: ['PHP', 'JavaScript', 'CSS']
+  },
+  {
     id: 'dashboardrh',
     image: 'projects/dashboardrh.webp',
     name: 'Dashboard RH',

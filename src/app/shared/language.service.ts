@@ -39,6 +39,8 @@ const translations: Record<Language, Record<string, string>> = {
       'Site institucional seguindo o mesmo modelo dos anteriores, adaptado à identidade da funerária.',
     'projects.mural':
       'Plataforma para funerárias publicarem memoriais online, com homenagens, velas virtuais, moderação e artes para impressão.',
+    'projects.zubartez':
+      'Portfólio de ilustrador com visual cartoon, orçamento pelo WhatsApp e painel para o artista publicar as próprias obras.',
     'projects.dashboardrh':
       'Painel de indicadores de RH em PO-UI, consumindo dados do Protheus via REST.',
     'projects.invoice':
@@ -117,6 +119,8 @@ const translations: Record<Language, Record<string, string>> = {
       'Business website following the same model as the previous ones, adapted to the brand identity.',
     'projects.mural':
       'Platform for funeral homes to publish online memorials, with tributes, virtual candles, moderation and printable artwork.',
+    'projects.zubartez':
+      'Illustrator portfolio with a cartoon look, quotes via WhatsApp and an admin panel for the artist to publish his own work.',
     'projects.dashboardrh':
       'HR KPI dashboard built with PO-UI, consuming Protheus data through REST.',
     'projects.invoice':
@@ -195,6 +199,8 @@ const translations: Record<Language, Record<string, string>> = {
       'Sitio institucional con el mismo modelo de los anteriores, adaptado a la identidad de la funeraria.',
     'projects.mural':
       'Plataforma para que funerarias publiquen memoriales online, con homenajes, velas virtuales, moderación y artes para imprimir.',
+    'projects.zubartez':
+      'Portafolio de ilustrador con estilo cartoon, presupuestos por WhatsApp y panel para que el artista publique sus propias obras.',
     'projects.dashboardrh':
       'Panel de indicadores de RRHH en PO-UI, consumiendo datos de Protheus vía REST.',
     'projects.invoice':
