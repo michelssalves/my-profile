@@ -32,4 +32,4 @@ O currículo em português usa o arquivo original `public/CV.Michel.pdf`.
 
 ## URL publicada
 
-- https://michelssalves.github.io/my-profile-angular/
+- https://michelssalves.github.io/my-profile/

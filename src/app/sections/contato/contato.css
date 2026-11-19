@@ -21,11 +21,6 @@
   max-width: 22ch;
 }
 
-.contact-text p {
-  color: var(--muted);
-  max-width: 52ch;
-}
-
 .contact-links {
   display: grid;
   gap: 10px;
@@ -75,11 +70,15 @@
 }
 
 @media (min-width: 720px) {
+  /* Título e botão do WhatsApp na mesma linha; os contatos ocupam a linha de baixo inteira. */
   .contact {
-    padding: 48px;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    padding: 40px 48px;
   }
 
   .contact-links {
+    grid-column: 1 / -1;
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 }
