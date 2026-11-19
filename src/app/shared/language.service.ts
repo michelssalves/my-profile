@@ -53,6 +53,8 @@ const translations: Record<Language, Record<string, string>> = {
       'Notas de entrada com impostos retidos e SLA do 3-way à digitação, aberto dentro do Protheus e migrado de REST para WebChannel.',
     'projects.ibscbs':
       'Livro fiscal item a item com CBS e IBS da reforma tributária, CST e cClassTrib, com consulta otimizada no banco.',
+    'projects.aprovacoes':
+      'Pedidos, notas e solicitações de pagamento parados na alçada, com fluxo por nível, indicadores, gráficos e Excel.',
     'projects.visit': 'Visitar site',
     'projects.demo': 'Ver demonstração',
     'projects.source': 'Código',
@@ -137,6 +139,8 @@ const translations: Record<Language, Record<string, string>> = {
       'Incoming invoices with withheld taxes and 3-way-to-entry SLA, running inside Protheus and migrated from REST to WebChannel.',
     'projects.ibscbs':
       'Item-level tax ledger with Brazil’s new CBS and IBS taxes, CST and cClassTrib, backed by a tuned database query.',
+    'projects.aprovacoes':
+      'Purchase orders, invoices and payment requests waiting for approval, with per-level flow, KPIs, charts and Excel.',
     'projects.visit': 'Visit website',
     'projects.demo': 'View demo',
     'projects.source': 'Source',
@@ -221,6 +225,8 @@ const translations: Record<Language, Record<string, string>> = {
       'Facturas de entrada con impuestos retenidos y SLA del 3-way a la digitación, dentro de Protheus y migrado de REST a WebChannel.',
     'projects.ibscbs':
       'Libro fiscal ítem por ítem con CBS e IBS de la reforma tributaria brasileña, CST y cClassTrib, con consulta optimizada.',
+    'projects.aprovacoes':
+      'Pedidos, facturas y solicitudes de pago pendientes de aprobación, con flujo por nivel, indicadores, gráficos y Excel.',
     'projects.visit': 'Visitar sitio',
     'projects.demo': 'Ver demo',
     'projects.source': 'Código',

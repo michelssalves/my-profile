@@ -88,6 +88,16 @@ export const PROJECTS: Project[] = [
     url: 'https://michelssalves.github.io/livro-ibs-cbs/',
     repo: 'https://github.com/michelssalves/livro-ibs-cbs',
     stack: ['Angular', 'PO-UI', 'WebChannel', 'TLPP']
+  },
+  {
+    id: 'aprovacoes',
+    image: 'projects/aprovacoes-pendentes.webp',
+    name: 'Aprovações Pendentes',
+    category: 'erp',
+    domain: 'aprovacoes-pendentes',
+    url: 'https://michelssalves.github.io/aprovacoes-pendentes/',
+    repo: 'https://github.com/michelssalves/aprovacoes-pendentes',
+    stack: ['Angular', 'PO-UI', 'WebChannel', 'Charts']
   }
 ];
 

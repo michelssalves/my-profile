@@ -165,6 +165,11 @@
   --tone-b: #2e1f0b;
 }
 
+.preview[data-project='aprovacoes'] {
+  --tone-a: #23489f;
+  --tone-b: #0f1f45;
+}
+
 .browser-bar {
   display: flex;
   align-items: center;
@@ -251,9 +256,13 @@
 }
 
 @media (min-width: 1024px) {
-  /* Protheus também em 3 colunas: os três cards lado a lado, sem um sobrando sozinho. */
   .projects {
     grid-template-columns: repeat(3, 1fr);
+  }
+
+  /* Protheus com quatro projetos: 2 x 2, sem um card sobrando sozinho na segunda linha. */
+  .projects.erp {
+    grid-template-columns: repeat(2, 1fr);
   }
 
   .project.featured {
