@@ -18,6 +18,7 @@ export class App {
   readonly whatsappLink = computed(() => whatsappUrl(this.i18n.t('contact.whatsMessage')));
   readonly theme = signal<'dark' | 'light'>(this.getInitialTheme());
   readonly scrollProgress = signal(0);
+  readonly contactVisible = signal(false);
 
   private readonly destroyRef = inject(DestroyRef);
 
@@ -25,6 +26,7 @@ export class App {
     afterNextRender(() => {
       this.watchScroll();
       this.revealOnScroll();
+      this.watchContact();
     });
   }
 
@@ -60,6 +62,19 @@ export class App {
   }
 
   // Cards e titulos surgem ao entrar na tela (inspirado no MargemHub)
+  private watchContact(): void {
+    const contact = document.getElementById('contato');
+    if (!contact || !('IntersectionObserver' in window)) {
+      return;
+    }
+
+    const observer = new IntersectionObserver(([entry]) => this.contactVisible.set(entry.isIntersecting), {
+      threshold: 0.2
+    });
+    observer.observe(contact);
+    this.destroyRef.onDestroy(() => observer.disconnect());
+  }
+
   private revealOnScroll(): void {
     if (!('IntersectionObserver' in window)) {
       return;
