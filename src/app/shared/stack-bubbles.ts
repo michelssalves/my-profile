@@ -2,32 +2,40 @@ import { Component, DestroyRef, ElementRef, NgZone, afterNextRender, inject, vie
 import { STACK, StackItem } from './portfolio-data';
 
 interface Ball {
-  item: StackItem;
+  item?: StackItem;
+  /** Tamanho relativo ao da bolha com ícone (1 = mesmo tamanho). */
+  scale: number;
+  r: number;
   x: number;
   y: number;
   vx: number;
   vy: number;
 }
 
+/** Bolhas vazias soltas entre os ícones, de tamanhos variados. */
+const EMPTY_SCALES = [0.35, 0.45, 0.55, 0.6, 0.7, 0.85, 1, 1.2];
+
 /**
- * Ícones da stack soltos no fundo do site: andam devagar, batem nas bordas da tela e uns nos
- * outros (choque elástico), e o ponteiro empurra os que estão perto. Ficam atrás do conteúdo,
- * aparecendo nos espaços entre os blocos. A física roda fora do Angular, mexendo só no transform.
+ * Bolhas no fundo do site: as da stack (ícone e nome) e outras vazias, de vários tamanhos. Andam
+ * devagar, batem nas bordas da tela e umas nas outras (choque elástico, a maior empurra mais), e o
+ * ponteiro empurra as que estão perto. Ficam atrás do conteúdo, aparecendo nos espaços entre os
+ * blocos. A física roda fora do Angular, mexendo só no transform.
  */
 @Component({
   selector: 'app-stack-bubbles',
   imports: [],
   template: `
-    @for (ball of balls; track ball.item.name) {
-      <span class="ball" #ballEl>
-        <img [src]="ball.item.icon" alt="" width="26" height="26" [class.invert-dark]="ball.item.invertOnDark" />
-        <small>{{ ball.item.name }}</small>
+    @for (ball of balls; track $index) {
+      <span class="ball" [class.empty]="!ball.item" #ballEl>
+        @if (ball.item; as item) {
+          <img [src]="item.icon" alt="" width="40" height="40" [class.invert-dark]="item.invertOnDark" />
+          <small>{{ item.name }}</small>
+        }
       </span>
     }
   `,
   styles: `
     :host {
-      --ball: 56px;
       position: fixed;
       inset: 0;
       z-index: -1;
@@ -42,28 +50,26 @@ interface Ball {
       display: grid;
       place-items: center;
       align-content: center;
-      gap: 2px;
-      width: var(--ball);
-      height: var(--ball);
+      gap: 3px;
       border: 1px solid var(--border-strong);
       border-radius: 50%;
       background: var(--tile-2);
-      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
-      opacity: 0.75;
+      box-shadow: 0 8px 22px rgba(0, 0, 0, 0.25);
+      opacity: 0.8;
       will-change: transform;
     }
 
     .ball img {
-      width: calc(var(--ball) * 0.36);
-      height: calc(var(--ball) * 0.36);
+      width: calc(var(--size) * 0.4);
+      height: calc(var(--size) * 0.4);
       object-fit: contain;
     }
 
     .ball small {
-      max-width: 90%;
+      max-width: 88%;
       overflow: hidden;
       color: var(--ink);
-      font-size: calc(var(--ball) * 0.15);
+      font-size: var(--label);
       font-weight: 700;
       line-height: 1.1;
       text-align: center;
@@ -71,15 +77,22 @@ interface Ball {
       text-overflow: ellipsis;
     }
 
-    @media (min-width: 720px) {
-      :host {
-        --ball: 70px;
-      }
+    /* Bolha vazia: vidro, com reflexo no alto e borda colorida */
+    .ball.empty {
+      border-color: color-mix(in srgb, var(--grad-2) 45%, transparent);
+      background:
+        radial-gradient(circle at 32% 28%, rgba(255, 255, 255, 0.35), transparent 22%),
+        radial-gradient(circle at 50% 50%, transparent 55%, color-mix(in srgb, var(--grad-2) 22%, transparent));
+      box-shadow: inset 0 0 18px color-mix(in srgb, var(--grad-1) 25%, transparent);
+      opacity: 0.7;
     }
   `
 })
 export class StackBubbles {
-  readonly balls: Ball[] = STACK.flatMap((group) => group.items).map((item) => ({ item, x: 0, y: 0, vx: 0, vy: 0 }));
+  readonly balls: Ball[] = [
+    ...STACK.flatMap((group) => group.items).map((item) => newBall(1, item)),
+    ...EMPTY_SCALES.map((scale) => newBall(scale))
+  ];
 
   private readonly host = inject<ElementRef<HTMLElement>>(ElementRef);
   private readonly ballEls = viewChildren<ElementRef<HTMLElement>>('ballEl');
@@ -88,7 +101,6 @@ export class StackBubbles {
 
   private width = 0;
   private height = 0;
-  private radius = 0;
   private frame = 0;
   private lastTime = 0;
 
@@ -120,37 +132,52 @@ export class StackBubbles {
     });
   }
 
+  /** Tamanho da tela e das bolhas: a com ícone tem 96px no computador e 72px no celular. */
   private measure(): void {
     this.width = this.host.nativeElement.clientWidth;
     this.height = this.host.nativeElement.clientHeight;
-    this.radius = (this.ballEls()[0]?.nativeElement.offsetWidth ?? 56) / 2;
+    const base = this.width >= 720 ? 96 : 72;
+    this.host.nativeElement.style.setProperty('--label', `${Math.round(base * 0.14)}px`);
+
+    const els = this.ballEls();
+    this.balls.forEach((ball, i) => {
+      ball.r = (base * ball.scale) / 2;
+      const el = els[i]?.nativeElement;
+      if (el) {
+        el.style.setProperty('--size', `${ball.r * 2}px`);
+        el.style.width = el.style.height = `${ball.r * 2}px`;
+      }
+    });
   }
 
   /** Espalha em grade irregular pela tela, com direção e velocidade aleatórias. */
   private scatter(): void {
-    const cols = 4;
+    const cols = 5;
     const rows = Math.ceil(this.balls.length / cols);
-    this.balls.forEach((ball, i) => {
-      const cellW = this.width / cols;
-      const cellH = this.height / rows;
+    const cellW = this.width / cols;
+    const cellH = this.height / rows;
+    // Embaralha para as vazias não ficarem todas juntas no fim
+    const order = this.balls.map((_, i) => i).sort(() => Math.random() - 0.5);
+    order.forEach((ballIndex, cell) => {
+      const ball = this.balls[ballIndex];
       const dir = Math.random() * Math.PI * 2;
-      const speed = 18 + Math.random() * 18;
-      ball.x = cellW * ((i % cols) + 0.2 + Math.random() * 0.6);
-      ball.y = cellH * (Math.floor(i / cols) + 0.2 + Math.random() * 0.6);
+      const speed = 16 + Math.random() * 18;
+      ball.x = cellW * ((cell % cols) + 0.2 + Math.random() * 0.6);
+      ball.y = cellH * (Math.floor(cell / cols) + 0.2 + Math.random() * 0.6);
       ball.vx = Math.cos(dir) * speed;
       ball.vy = Math.sin(dir) * speed;
     });
   }
 
-  /** O ponteiro empurra as bolas próximas. */
+  /** O ponteiro empurra as bolhas próximas; as pequenas vão mais longe. */
   private push(px: number, py: number): void {
-    const reach = this.radius * 2.4;
     for (const ball of this.balls) {
+      const reach = ball.r + 60;
       const dx = ball.x - px;
       const dy = ball.y - py;
       const dist = Math.hypot(dx, dy) || 1;
       if (dist < reach) {
-        const force = ((reach - dist) / reach) * 60;
+        const force = ((reach - dist) / reach) * (60 / Math.max(ball.scale, 0.5));
         ball.vx += (dx / dist) * force;
         ball.vy += (dy / dist) * force;
       }
@@ -158,7 +185,7 @@ export class StackBubbles {
   }
 
   private tick(time: number): void {
-    // Limita o passo: ao voltar de uma aba escondida, as bolas não "teleportam"
+    // Limita o passo: ao voltar de uma aba escondida, as bolhas não "teleportam"
     const dt = Math.min((time - this.lastTime) / 1000, 1 / 30);
     this.lastTime = time;
     this.step(dt);
@@ -167,12 +194,10 @@ export class StackBubbles {
   }
 
   private step(dt: number): void {
-    const r = this.radius;
-
     for (const ball of this.balls) {
-      // Volta devagar à velocidade de cruzeiro depois de um empurrão: entre 18 e 160 px/s
+      // Volta devagar à velocidade de cruzeiro depois de um empurrão: entre 16 e 160 px/s
       const speed = Math.hypot(ball.vx, ball.vy) || 1;
-      const target = Math.min(Math.max(speed * 0.99, 18), 160);
+      const target = Math.min(Math.max(speed * 0.99, 16), 160);
       ball.vx = (ball.vx / speed) * target;
       ball.vy = (ball.vy / speed) * target;
 
@@ -180,23 +205,23 @@ export class StackBubbles {
       ball.y += ball.vy * dt;
 
       // Bordas da tela
-      if (ball.x < r) {
-        ball.x = r;
+      if (ball.x < ball.r) {
+        ball.x = ball.r;
         ball.vx = Math.abs(ball.vx);
-      } else if (ball.x > this.width - r) {
-        ball.x = this.width - r;
+      } else if (ball.x > this.width - ball.r) {
+        ball.x = this.width - ball.r;
         ball.vx = -Math.abs(ball.vx);
       }
-      if (ball.y < r) {
-        ball.y = r;
+      if (ball.y < ball.r) {
+        ball.y = ball.r;
         ball.vy = Math.abs(ball.vy);
-      } else if (ball.y > this.height - r) {
-        ball.y = this.height - r;
+      } else if (ball.y > this.height - ball.r) {
+        ball.y = this.height - ball.r;
         ball.vy = -Math.abs(ball.vy);
       }
     }
 
-    // Choque entre as bolas: massas iguais, troca as componentes na direção do contato
+    // Choque elástico com massa proporcional à área: a bolha grande empurra a pequena
     for (let i = 0; i < this.balls.length; i++) {
       for (let j = i + 1; j < this.balls.length; j++) {
         const a = this.balls[i];
@@ -204,24 +229,27 @@ export class StackBubbles {
         const dx = b.x - a.x;
         const dy = b.y - a.y;
         const dist = Math.hypot(dx, dy) || 0.01;
-        const overlap = 2 * r - dist;
+        const overlap = a.r + b.r - dist;
         if (overlap <= 0) {
           continue;
         }
 
+        const ma = a.r * a.r;
+        const mb = b.r * b.r;
         const nx = dx / dist;
         const ny = dy / dist;
-        a.x -= (nx * overlap) / 2;
-        a.y -= (ny * overlap) / 2;
-        b.x += (nx * overlap) / 2;
-        b.y += (ny * overlap) / 2;
+        a.x -= nx * overlap * (mb / (ma + mb));
+        a.y -= ny * overlap * (mb / (ma + mb));
+        b.x += nx * overlap * (ma / (ma + mb));
+        b.y += ny * overlap * (ma / (ma + mb));
 
         const rel = (a.vx - b.vx) * nx + (a.vy - b.vy) * ny;
         if (rel > 0) {
-          a.vx -= rel * nx;
-          a.vy -= rel * ny;
-          b.vx += rel * nx;
-          b.vy += rel * ny;
+          const impulse = (2 * rel) / (ma + mb);
+          a.vx -= impulse * mb * nx;
+          a.vy -= impulse * mb * ny;
+          b.vx += impulse * ma * nx;
+          b.vy += impulse * ma * ny;
         }
       }
     }
@@ -232,8 +260,12 @@ export class StackBubbles {
     this.balls.forEach((ball, i) => {
       const el = els[i]?.nativeElement;
       if (el) {
-        el.style.transform = `translate(${ball.x - this.radius}px, ${ball.y - this.radius}px)`;
+        el.style.transform = `translate(${ball.x - ball.r}px, ${ball.y - ball.r}px)`;
       }
     });
   }
+}
+
+function newBall(scale: number, item?: StackItem): Ball {
+  return { item, scale, r: 0, x: 0, y: 0, vx: 0, vy: 0 };
 }
