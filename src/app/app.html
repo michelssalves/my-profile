@@ -4,12 +4,8 @@
 <a class="skip-link" href="#conteudo">{{ i18n.t('nav.skip') }}</a>
 
 <header class="topbar">
-  <a class="brand" href="#hero">
+  <a class="brand" href="#hero" aria-label="Michel Alves">
     <span class="brand-mark" aria-hidden="true">MA</span>
-    <span class="brand-text">
-      <strong>Michel Alves</strong>
-      <small>{{ i18n.t('brand.role') }}</small>
-    </span>
   </a>
   <span class="status"><span class="status-dot" aria-hidden="true"></span>{{ i18n.t('hero.availableTitle') }}</span>
   <div class="topbar-actions">
@@ -41,19 +37,7 @@
 
 <main id="conteudo">
   <app-hero></app-hero>
-  <!-- Faixa da stack: duas linhas correndo em sentidos opostos, numa faixa levemente inclinada -->
-  <div class="marquee" aria-hidden="true">
-    @for (row of marqueeRows; track $index; let odd = $odd) {
-      <div class="marquee-track" [class.reverse]="odd">
-        @for (item of row; track $index) {
-          <span class="marquee-item">
-            <img [src]="item.icon" alt="" width="26" height="26" [class.invert-dark]="item.invertOnDark" />
-            {{ item.name }}
-          </span>
-        }
-      </div>
-    }
-  </div>
+  <app-stack-bubbles></app-stack-bubbles>
   <app-projetos></app-projetos>
   <app-sobre></app-sobre>
   <app-contato></app-contato>

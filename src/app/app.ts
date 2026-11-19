@@ -4,12 +4,13 @@ import { Sobre } from './sections/sobre/sobre';
 import { Projetos } from './sections/projetos/projetos';
 import { Contato } from './sections/contato/contato';
 import { Language, LanguageService } from './shared/language.service';
-import { STACK, whatsappUrl } from './shared/portfolio-data';
+import { whatsappUrl } from './shared/portfolio-data';
+import { StackBubbles } from './shared/stack-bubbles';
 import { FxBackground } from './shared/fx-background';
 
 @Component({
   selector: 'app-root',
-  imports: [Hero, Projetos, Sobre, Contato, FxBackground],
+  imports: [Hero, Projetos, Sobre, Contato, FxBackground, StackBubbles],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
@@ -26,12 +27,6 @@ export class App {
     { code: 'es', label: 'Español', flag: 'flags/es.svg' }
   ];
 
-  // Cada linha repete os itens duas vezes para rolar sem emenda; a segunda vem invertida
-  private readonly stackItems = STACK.flatMap((group) => group.items);
-  readonly marqueeRows = [
-    [...this.stackItems, ...this.stackItems],
-    [...this.stackItems].reverse().concat([...this.stackItems].reverse())
-  ];
 
   private readonly destroyRef = inject(DestroyRef);
 

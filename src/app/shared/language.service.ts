@@ -7,7 +7,6 @@ const SUPPORTED_LANGUAGES: Language[] = ['pt', 'en', 'es'];
 
 const translations: Record<Language, Record<string, string>> = {
   pt: {
-    'brand.role': 'Full stack',
     'nav.skip': 'Pular para o conteúdo',
     'nav.contact': 'Contato',
     'hero.eyebrow': 'Desenvolvedor Protheus e web',
@@ -15,6 +14,7 @@ const translations: Record<Language, Record<string, string>> = {
     'hero.titleHighlight': 'que funcionam no dia a dia do negócio.',
     'hero.projects': 'Projetos',
     'hero.cv': 'Baixar currículo',
+    'hero.cvShort': 'Currículo',
     'hero.photoAlt': 'Foto de Michel Alves',
     'hero.language': 'Idioma',
     'hero.availableTitle': 'Disponível',
@@ -85,7 +85,6 @@ const translations: Record<Language, Record<string, string>> = {
     'footer.text': 'Feito com Angular.'
   },
   en: {
-    'brand.role': 'Full stack',
     'nav.skip': 'Skip to content',
     'nav.contact': 'Contact',
     'hero.eyebrow': 'Protheus & web developer',
@@ -93,6 +92,7 @@ const translations: Record<Language, Record<string, string>> = {
     'hero.titleHighlight': 'that work in day-to-day business.',
     'hero.projects': 'Projects',
     'hero.cv': 'Download resume',
+    'hero.cvShort': 'Resume',
     'hero.photoAlt': 'Photo of Michel Alves',
     'hero.language': 'Language',
     'hero.availableTitle': 'Available',
@@ -163,7 +163,6 @@ const translations: Record<Language, Record<string, string>> = {
     'footer.text': 'Built with Angular.'
   },
   es: {
-    'brand.role': 'Full stack',
     'nav.skip': 'Saltar al contenido',
     'nav.contact': 'Contacto',
     'hero.eyebrow': 'Desarrollador Protheus y web',
@@ -171,6 +170,7 @@ const translations: Record<Language, Record<string, string>> = {
     'hero.titleHighlight': 'que funcionan en el día a día del negocio.',
     'hero.projects': 'Proyectos',
     'hero.cv': 'Descargar CV',
+    'hero.cvShort': 'CV',
     'hero.photoAlt': 'Foto de Michel Alves',
     'hero.language': 'Idioma',
     'hero.availableTitle': 'Disponible',

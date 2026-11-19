@@ -26,7 +26,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 8px;
+  gap: 10px;
   max-width: var(--max);
   margin: 10px 12px 0;
   padding: 6px 6px 6px 10px;
@@ -60,24 +60,6 @@
   font-weight: 700;
 }
 
-.brand-text {
-  display: none;
-  flex-direction: column;
-  line-height: 1.1;
-}
-
-.brand-text strong {
-  font-size: 0.92rem;
-}
-
-.brand-text small {
-  color: var(--muted);
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
 .topbar-actions {
   display: flex;
   align-items: center;
@@ -90,10 +72,6 @@
   align-items: center;
   gap: 7px;
   margin-right: auto;
-  padding: 5px 11px 5px 9px;
-  border: 1px solid color-mix(in srgb, var(--success) 35%, transparent);
-  border-radius: 999px;
-  background: color-mix(in srgb, var(--success) 10%, transparent);
   color: var(--success);
   font-size: 0.72rem;
   font-weight: 800;
@@ -189,10 +167,6 @@ main {
 }
 
 @media (min-width: 640px) {
-  .brand-text {
-    display: flex;
-  }
-
   .theme-toggle {
     width: 44px;
     height: 44px;
@@ -215,64 +189,7 @@ main {
   }
 }
 
-/* Faixa da stack: inclinada, com borda em gradiente e duas linhas em sentidos opostos */
-.marquee {
-  display: grid;
-  gap: 12px;
-  /* Sai do limite do conteúdo e vai de borda a borda (com folga para a inclinação) */
-  margin: -28px calc(50% - 50vw - 40px) 0;
-  padding: 18px 40px;
-  overflow: hidden;
-  transform: rotate(-1.5deg);
-  border-block: 2px solid transparent;
-  border-image: linear-gradient(90deg, var(--grad-1), var(--grad-2), var(--grad-3)) 1;
-  background: linear-gradient(90deg, color-mix(in srgb, var(--grad-1) 14%, transparent), color-mix(in srgb, var(--grad-3) 14%, transparent));
-}
-
-.marquee-track {
-  display: flex;
-  gap: 14px;
-  width: max-content;
-  animation: marquee 22s linear infinite;
-}
-
-.marquee-track.reverse {
-  animation-direction: reverse;
-  animation-duration: 26s;
-}
-
-.marquee:hover .marquee-track {
-  animation-play-state: paused;
-}
-
-.marquee-item {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  padding: 8px 18px 8px 12px;
-  border: 1px solid var(--border);
-  border-radius: 999px;
-  background: var(--tile);
-  color: var(--ink);
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 1.1rem;
-  font-weight: 700;
-  white-space: nowrap;
-  box-shadow: 0 0 18px color-mix(in srgb, var(--grad-2) 18%, transparent);
-}
-
-.marquee-item img {
-  width: 26px;
-  height: 26px;
-  object-fit: contain;
-}
-
-@keyframes marquee {
-  to { transform: translateX(calc(-50% - 7px)); }
-}
-
 @media (prefers-reduced-motion: reduce) {
-  .marquee-track,
   .status-dot,
   .status-dot::after {
     animation: none;

@@ -27,12 +27,6 @@
   white-space: nowrap;
 }
 
-/* Curriculo so com o icone de download: quadrado, sem esticar. */
-.intro .actions .btn.icon-only {
-  flex: none;
-  width: 44px;
-  padding: 0;
-}
 
 .eyebrow {
   min-height: 1.3em;
@@ -135,7 +129,7 @@
     min-height: 300px;
   }
 
-  .intro .actions .btn:not(.icon-only) {
+  .intro .actions .btn {
     flex: none;
     padding: 0 18px;
   }
