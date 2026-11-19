@@ -31,16 +31,6 @@
 
 <main id="conteudo">
   <app-hero></app-hero>
-  <div class="marquee" aria-hidden="true">
-    <div class="marquee-track">
-      @for (item of marqueeItems; track $index) {
-        <span class="marquee-item">
-          <img [src]="item.icon" alt="" width="22" height="22" [class.invert-dark]="item.invertOnDark" />
-          {{ item.name }}
-        </span>
-      }
-    </div>
-  </div>
   <app-projetos></app-projetos>
   <app-sobre></app-sobre>
   <app-contato></app-contato>

@@ -8,7 +8,6 @@
       {{ i18n.t('hero.title') }}
       <span class="gradient-text highlight">{{ i18n.t('hero.titleHighlight') }}</span>
     </h1>
-    <p class="lead">{{ i18n.t('hero.lead') }}</p>
     <div class="actions">
       <a class="btn primary" href="#projetos">{{ i18n.t('hero.projects') }}</a>
       <a class="btn secondary" [href]="cvLink()" target="_blank" rel="noopener">{{ i18n.t('hero.cv') }}</a>
@@ -24,24 +23,6 @@
       <strong>Michel Alves</strong>
     </figcaption>
   </figure>
-
-  <article class="tile lang">
-    <h2 class="tile-label" id="lang-label">{{ i18n.t('hero.language') }}</h2>
-    <div class="lang-switch" role="group" aria-labelledby="lang-label">
-      @for (option of languages; track option.code) {
-        <button
-          type="button"
-          (click)="setLanguage(option.code)"
-          [class.active]="i18n.lang() === option.code"
-          [attr.aria-pressed]="i18n.lang() === option.code"
-          [attr.aria-label]="option.label"
-        >
-          <img [src]="option.flag" alt="" width="22" height="16" />
-          <span>{{ option.short }}</span>
-        </button>
-      }
-    </div>
-  </article>
 
   <article class="tile stack">
     <h2 class="tile-label">{{ i18n.t('stack.title') }}</h2>
@@ -64,5 +45,20 @@
     <h2 class="tile-label"><span class="dot" aria-hidden="true"></span>{{ i18n.t('hero.availableTitle') }}</h2>
     <p>{{ i18n.t('hero.available') }}</p>
     <a class="btn ghost" href="#contato">{{ i18n.t('hero.talk') }} <span aria-hidden="true">→</span></a>
+    <h2 class="sr-only" id="lang-label">{{ i18n.t('hero.language') }}</h2>
+    <div class="lang-switch" role="group" aria-labelledby="lang-label">
+      @for (option of languages; track option.code) {
+        <button
+          type="button"
+          (click)="setLanguage(option.code)"
+          [class.active]="i18n.lang() === option.code"
+          [attr.aria-pressed]="i18n.lang() === option.code"
+          [attr.aria-label]="option.label"
+        >
+          <img [src]="option.flag" alt="" width="22" height="16" />
+          <span>{{ option.short }}</span>
+        </button>
+      }
+    </div>
   </article>
 </section>

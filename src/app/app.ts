@@ -4,7 +4,7 @@ import { Sobre } from './sections/sobre/sobre';
 import { Projetos } from './sections/projetos/projetos';
 import { Contato } from './sections/contato/contato';
 import { LanguageService } from './shared/language.service';
-import { STACK, whatsappUrl } from './shared/portfolio-data';
+import { whatsappUrl } from './shared/portfolio-data';
 import { FxBackground } from './shared/fx-background';
 
 @Component({
@@ -18,8 +18,6 @@ export class App {
   readonly whatsappLink = computed(() => whatsappUrl(this.i18n.t('contact.whatsMessage')));
   readonly theme = signal<'dark' | 'light'>(this.getInitialTheme());
   readonly scrollProgress = signal(0);
-  // Itens duplicados para a faixa rolar sem emenda
-  readonly marqueeItems = [...STACK.flatMap((group) => group.items), ...STACK.flatMap((group) => group.items)];
 
   private readonly destroyRef = inject(DestroyRef);
 

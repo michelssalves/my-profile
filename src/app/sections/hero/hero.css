@@ -39,12 +39,6 @@
   50% { opacity: 0; }
 }
 
-.lead {
-  color: var(--muted);
-  font-size: 1.02rem;
-  max-width: 58ch;
-}
-
 .photo {
   padding: 0;
   overflow: hidden;
@@ -107,24 +101,25 @@
 }
 
 .lang-switch {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 8px;
+  display: flex;
+  gap: 6px;
+  margin-top: auto;
 }
 
 .lang-switch button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  min-height: 44px;
+  gap: 6px;
+  min-height: 32px;
+  padding: 0 10px;
   border: 1px solid var(--border);
-  border-radius: var(--radius-sm);
+  border-radius: 999px;
   background: var(--tile-2);
   color: var(--ink);
   font: inherit;
   font-weight: 700;
-  font-size: 0.85rem;
+  font-size: 0.78rem;
   cursor: pointer;
   transition: border-color 0.2s ease, background-color 0.2s ease;
 }
@@ -147,7 +142,8 @@
 
 .stack {
   display: grid;
-  gap: 14px;
+  gap: 10px;
+  align-content: center;
 }
 
 .stack .tile-label {
@@ -156,6 +152,8 @@
 
 .stack-group {
   display: grid;
+  grid-template-columns: 82px 1fr;
+  align-items: center;
   gap: 8px;
 }
 
@@ -226,9 +224,10 @@
 }
 
 .available {
-  display: grid;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
   gap: 10px;
-  align-content: start;
 }
 
 .available .tile-label {
@@ -249,8 +248,10 @@
 }
 
 @media (min-width: 720px) {
+  /* dense: o card Disponível sobe para o lado da foto em vez de deixar meia linha vazia. */
   .bento {
     grid-template-columns: repeat(2, 1fr);
+    grid-auto-flow: dense;
   }
 
   .intro {
@@ -277,8 +278,8 @@
   .intro {
     grid-column: 1 / 4;
     grid-row: 1;
-    min-height: 420px;
-    padding: 48px;
+    min-height: 340px;
+    padding: 44px 48px;
   }
 
   .photo {
@@ -288,17 +289,8 @@
   }
 
   .stack {
-    grid-column: 1 / 3;
+    grid-column: 1 / 4;
     grid-row: 2;
-  }
-
-  .lang {
-    grid-column: 3;
-    grid-row: 2;
-  }
-
-  .lang-switch {
-    grid-template-columns: 1fr;
   }
 
   .available {
