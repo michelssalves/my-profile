@@ -172,6 +172,11 @@
   --tone-b: #1e1b4b;
 }
 
+.preview[data-project='bomba'] {
+  --tone-a: #7a3b2c;
+  --tone-b: #2a120c;
+}
+
 .preview[data-project='dashboardrh'] {
   --tone-a: #1f5fbf;
   --tone-b: #0e2a55;

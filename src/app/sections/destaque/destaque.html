@@ -1,62 +1,176 @@
-<section id="destaque" class="feature tile" aria-labelledby="feature-title">
-  <div class="feature-copy">
-    <span class="feature-badge">
-      <span class="badge-dot" aria-hidden="true"></span>{{ i18n.t('feat.car.badge') }}
-    </span>
-    <h2 id="feature-title">
-      {{ i18n.t('feat.car.title') }}
-      <span class="gradient-text">{{ i18n.t('feat.car.titleHighlight') }}</span>
-    </h2>
-    <p class="feature-lead">{{ i18n.t('feat.car.lead') }}</p>
+<section
+  id="destaque"
+  class="carousel"
+  aria-roledescription="carousel"
+  [attr.aria-label]="i18n.t('feat.label')"
+  (mouseenter)="pause(true)"
+  (mouseleave)="pause(false)"
+  (focusin)="pause(true)"
+  (focusout)="pause(false)"
+  (keydown)="onKeydown($event)"
+>
+  <div class="viewport" (pointerdown)="onPointerDown($event)" (pointerup)="onPointerUp($event)">
+    <div class="track" [style.transform]="'translateX(-' + current() * 100 + '%)'">
+      @for (slide of slides; track slide.id; let i = $index) {
+        <article
+          class="slide tile"
+          [attr.data-slide]="slide.id"
+          [class.active]="i === current()"
+          role="group"
+          aria-roledescription="slide"
+          [attr.aria-label]="i + 1 + ' / ' + slides.length"
+          [attr.aria-hidden]="i !== current()"
+          [inert]="i !== current()"
+        >
+          <div class="feature-copy">
+            <span class="feature-badge">
+              <span class="badge-dot" aria-hidden="true"></span>{{ i18n.t('feat.' + slide.id + '.badge') }}
+            </span>
+            <h2>
+              {{ i18n.t('feat.' + slide.id + '.title') }}
+              <span class="gradient-text">{{ i18n.t('feat.' + slide.id + '.titleHighlight') }}</span>
+            </h2>
+            <p class="feature-lead">{{ i18n.t('feat.' + slide.id + '.lead') }}</p>
 
-    <ul class="benefits">
-      @for (key of benefits; track key) {
-        <li>{{ i18n.t(key) }}</li>
+            <ul class="benefits">
+              @for (n of range(slide.benefits); track n) {
+                <li>{{ i18n.t('feat.' + slide.id + '.b' + n) }}</li>
+              }
+            </ul>
+
+            @if (slide.id === 'car') {
+              <p class="moments-label">{{ i18n.t('feat.car.momentsLabel') }}</p>
+              <ul class="chips moments">
+                @for (key of moments; track key) {
+                  <li>{{ i18n.t(key) }}</li>
+                }
+              </ul>
+            }
+
+            <div class="actions">
+              @if (slide.url) {
+                <a class="btn cta" [href]="slide.url" target="_blank" rel="noopener">
+                  {{ i18n.t('feat.' + slide.id + '.cta') }}
+                  <span class="sr-only">({{ i18n.t('projects.newTab') }})</span>
+                </a>
+              } @else {
+                <a class="btn whats" [href]="carLink()" target="_blank" rel="noopener">
+                  {{ i18n.t('feat.car.cta') }}
+                  <span class="sr-only">({{ i18n.t('projects.newTab') }})</span>
+                </a>
+              }
+            </div>
+            @if (slide.id === 'car') {
+              <p class="fineprint">{{ i18n.t('feat.car.fineprint') }}</p>
+            }
+          </div>
+
+          @switch (slide.id) {
+            @case ('car') {
+              <!-- Central multimidia: parado mostra a imagem; andando, com a trava ligada, so a imagem se esconde e o video segue. -->
+              <div class="visual dash" aria-hidden="true">
+                <div class="screen">
+                  <div class="screen-top">
+                    @for (tab of carTabs; track tab; let first = $first) {
+                      <span class="tab" [class.active]="first">{{ tab }}</span>
+                    }
+                  </div>
+                  <div class="grid">
+                    @for (thumb of thumbs; track thumb.emoji) {
+                      <span class="thumb" [attr.data-tone]="thumb.tone">{{ thumb.emoji }}</span>
+                    }
+                  </div>
+                  <div class="audio-only">
+                    <span class="notes">♪ ♫ ♪</span>
+                    <strong>{{ i18n.t('feat.car.audioOnly') }}</strong>
+                    <small>{{ i18n.t('feat.car.audioOnlySub') }}</small>
+                  </div>
+                  <div class="progress"><span></span></div>
+                </div>
+                <div class="dash-base">
+                  <span class="speed">
+                    <b class="speed-stop">0</b><b class="speed-go">40</b>
+                    km/h
+                  </span>
+                  <span class="lock">🔒 {{ i18n.t('feat.car.lockOptional') }}</span>
+                  <span class="state state-stop">{{ i18n.t('feat.car.stateStop') }}</span>
+                  <span class="state state-go">{{ i18n.t('feat.car.stateGo') }}</span>
+                </div>
+              </div>
+            }
+            @case ('trilhas') {
+              <!-- Mapa mental: os topicos aparecem um a um e o trilho vai acendendo. -->
+              <div class="visual map" aria-hidden="true">
+                <svg class="rails" viewBox="0 0 400 300" preserveAspectRatio="none">
+                  <path d="M200 150 L80 60" />
+                  <path d="M200 150 L320 60" />
+                  <path d="M200 150 L320 240" />
+                  <path d="M200 150 L80 240" />
+                </svg>
+                <span class="node center">{{ i18n.t('feat.trilhas.center') }}</span>
+                @for (key of mapNodes; track key; let i = $index) {
+                  <span class="node leaf" [attr.data-pos]="i + 1">
+                    <b>{{ i + 1 }}</b>{{ i18n.t(key) }}
+                  </span>
+                }
+              </div>
+            }
+            @case ('english') {
+              <!-- Celular com a pratica de fala: pergunta, microfone ouvindo e acerto. -->
+              <div class="visual phone" aria-hidden="true">
+                <div class="phone-screen">
+                  <span class="streak">🔥 {{ i18n.t('feat.english.streak') }}</span>
+                  <p class="bubble app">🔊 “How are you today?”</p>
+                  <div class="mic">
+                    <span class="mic-icon">🎙️</span>
+                    <span class="wave"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
+                  </div>
+                  <p class="bubble me">“I’m great, thanks!”</p>
+                  <p class="score">✓ {{ i18n.t('feat.english.score') }}</p>
+                </div>
+              </div>
+            }
+            @case ('bomba') {
+              <!-- Bomba com pavio aceso e a pergunta da vez; a resposta certa acende no fim do pavio. -->
+              <div class="visual quiz" aria-hidden="true">
+                <div class="bomb">
+                  <span class="fuse"></span>
+                  <span class="spark"></span>
+                  <span class="bomb-time"><b class="t1">10</b><b class="t2">5</b><b class="t3">!</b></span>
+                </div>
+                <div class="question">
+                  <p>{{ i18n.t('feat.bomba.q') }}</p>
+                  <ul>
+                    @for (key of quizOptions; track key; let i = $index) {
+                      <li [class.right]="i === 1">{{ i18n.t(key) }}</li>
+                    }
+                  </ul>
+                </div>
+              </div>
+            }
+          }
+        </article>
       }
-    </ul>
-
-    <p class="moments-label">{{ i18n.t('feat.car.momentsLabel') }}</p>
-    <ul class="chips moments">
-      @for (key of moments; track key) {
-        <li>{{ i18n.t(key) }}</li>
-      }
-    </ul>
-
-    <div class="actions">
-      <a class="btn whats" [href]="wantLink()" target="_blank" rel="noopener">
-        {{ i18n.t('feat.car.cta') }}
-        <span class="sr-only">({{ i18n.t('projects.newTab') }})</span>
-      </a>
     </div>
-    <p class="fineprint">{{ i18n.t('feat.car.fineprint') }}</p>
   </div>
 
-  <!-- Central multimidia desenhada em CSS: alterna entre carro parado (video) e em movimento (so audio). -->
-  <div class="dash" aria-hidden="true">
-    <div class="screen">
-      <div class="screen-top">
-        <span class="tab active">Drive</span>
-        <span class="tab">YouTube</span>
-        <span class="clock">14:32</span>
-      </div>
-      <div class="grid">
-        @for (thumb of thumbs; track thumb.emoji) {
-          <span class="thumb" [attr.data-tone]="thumb.tone">{{ thumb.emoji }}</span>
-        }
-      </div>
-      <div class="audio-only">
-        <span class="notes">♪ ♫ ♪</span>
-        <strong>{{ i18n.t('feat.car.audioOnly') }}</strong>
-        <small>{{ i18n.t('feat.car.audioOnlySub') }}</small>
-      </div>
+  <div class="controls">
+    <button type="button" class="nav" (click)="prev()" [attr.aria-label]="i18n.t('feat.prev')">‹</button>
+    <div class="dots">
+      @for (slide of slides; track slide.id; let i = $index) {
+        <button
+          type="button"
+          class="dot"
+          [attr.data-slide]="slide.id"
+          [class.active]="i === current()"
+          [attr.aria-current]="i === current()"
+          [attr.aria-label]="i18n.t('feat.' + slide.id + '.title')"
+          (click)="pick(i)"
+        >
+          <span>{{ i18n.t('feat.' + slide.id + '.short') }}</span>
+        </button>
+      }
     </div>
-    <div class="dash-base">
-      <span class="speed">
-        <b class="speed-stop">0</b><b class="speed-go">40</b>
-        km/h
-      </span>
-      <span class="state state-stop">{{ i18n.t('feat.car.stateStop') }}</span>
-      <span class="state state-go">{{ i18n.t('feat.car.stateGo') }}</span>
-    </div>
+    <button type="button" class="nav" (click)="next()" [attr.aria-label]="i18n.t('feat.next')">›</button>
   </div>
 </section>

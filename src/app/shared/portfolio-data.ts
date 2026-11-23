@@ -87,6 +87,15 @@ export const PROJECTS: Project[] = [
     stack: ['React', 'Firebase', 'Web Speech', 'PWA']
   },
   {
+    id: 'bomba',
+    image: 'projects/biblia-quiz.webp',
+    name: 'Quiz Bíblico da Bomba',
+    category: 'own',
+    domain: 'biblia-quiz.michelssalves.workers.dev',
+    url: 'https://biblia-quiz.michelssalves.workers.dev/',
+    stack: ['JavaScript', 'Cloudflare Workers', 'D1']
+  },
+  {
     id: 'dashboardrh',
     image: 'projects/dashboardrh.webp',
     name: 'Dashboard RH',
