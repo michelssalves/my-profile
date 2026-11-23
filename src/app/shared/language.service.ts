@@ -30,6 +30,10 @@ const translations: Record<Language, Record<string, string>> = {
     'projects.group.erp': 'Telas web para o Protheus',
     'projects.group.erp.badge': 'ERP TOTVS Protheus',
     'projects.group.erp.desc': 'Relatórios e dashboards em Angular + PO-UI que rodam dentro do Protheus.',
+    'projects.group.own': 'Projetos próprios',
+    'projects.group.own.badge': 'Ideias minhas',
+    'projects.group.own.desc':
+      'Apps que criei para resolver problemas meus e de quem está por perto.',
     'projects.tag.demo': 'dados fictícios',
     'projects.memorial':
       'Site institucional com planos, serviços, galeria do crematório e atendimento direto pelo WhatsApp.',
@@ -41,6 +45,10 @@ const translations: Record<Language, Record<string, string>> = {
       'Plataforma para funerárias publicarem memoriais online, com homenagens, velas virtuais, moderação e artes para impressão.',
     'projects.zubartez':
       'Portfólio de ilustrador com visual cartoon, orçamento pelo WhatsApp e painel para o artista publicar as próprias obras.',
+    'projects.trilhas':
+      'Editor de aulas em mapa mental: cola o roteiro, organiza os tópicos em cards com versículos e imagens e publica a trilha para apresentar.',
+    'projects.english':
+      'App para aprender inglês ouvindo e falando: teste de nível, trilha personalizada, prática de pronúncia por voz e revisão diária. Instala no celular.',
     'projects.dashboardrh':
       'Painel de indicadores de RH em PO-UI, consumindo dados do Protheus via REST.',
     'projects.invoice':
@@ -55,6 +63,31 @@ const translations: Record<Language, Record<string, string>> = {
     'projects.demo': 'Ver demonstração',
     'projects.source': 'Código',
     'projects.newTab': 'abre em nova aba',
+    'feat.car.badge': 'Projeto próprio · Android Auto',
+    'feat.car.title': 'Vídeos no Carro.',
+    'feat.car.titleHighlight': 'Chega de “já chegou?”.',
+    'feat.car.lead':
+      'Os desenhos que as crianças amam, do Google Drive e do YouTube, direto na tela da central multimídia. Você escolhe o que entra; elas escolhem o que assistir, com botões grandes feitos para dedinhos.',
+    'feat.car.b1':
+      'Só toca o que os pais liberaram: uma pasta do Drive e uma lista de vídeos do YouTube.',
+    'feat.car.b2': 'Carro andando? A imagem some e o som continua — vira rádio de historinhas.',
+    'feat.car.b3': 'Busca por voz: é só pedir o desenho.',
+    'feat.car.b4':
+      'Viu um vídeo legal? Toque em Compartilhar no YouTube e ele já aparece no carro.',
+    'feat.car.momentsLabel': 'Feito para aqueles minutos que parecem horas:',
+    'feat.car.m1': 'Fila do drive-thru',
+    'feat.car.m2': 'Esperando a saída da escola',
+    'feat.car.m3': 'Parada na estrada',
+    'feat.car.m4': 'Lava-rápido',
+    'feat.car.cta': 'Quero no meu carro',
+    'feat.car.fineprint':
+      'Para celulares Android com Android Auto. Instalação assistida, fora da Play Store.',
+    'feat.car.whatsMessage':
+      'Olá Michel! Vi o app Vídeos no Carro no seu portfólio e quero ter no meu carro.',
+    'feat.car.audioOnly': 'Em movimento: só áudio',
+    'feat.car.audioOnlySub': 'a historinha continua tocando',
+    'feat.car.stateStop': 'Parado · tela liberada',
+    'feat.car.stateGo': 'Andando · só som',
     'exp.title': 'Experiência',
     'exp.tcp.role': 'Programador ADVPL',
     'exp.tcp.period': 'Atual',
@@ -110,6 +143,10 @@ const translations: Record<Language, Record<string, string>> = {
     'projects.group.erp': 'Web screens for Protheus',
     'projects.group.erp.badge': 'TOTVS Protheus ERP',
     'projects.group.erp.desc': 'Angular + PO-UI reports and dashboards that run inside Protheus.',
+    'projects.group.own': 'Personal projects',
+    'projects.group.own.badge': 'My own ideas',
+    'projects.group.own.desc':
+      'Apps I built to solve my own problems and those of people around me.',
     'projects.tag.demo': 'fictitious data',
     'projects.memorial':
       'Business website with plans, services, crematorium gallery and direct WhatsApp support.',
@@ -121,6 +158,10 @@ const translations: Record<Language, Record<string, string>> = {
       'Platform for funeral homes to publish online memorials, with tributes, virtual candles, moderation and printable artwork.',
     'projects.zubartez':
       'Illustrator portfolio with a cartoon look, quotes via WhatsApp and an admin panel for the artist to publish his own work.',
+    'projects.trilhas':
+      'Mind-map lesson editor: paste the script, organize topics into cards with verses and images, and publish the path to present.',
+    'projects.english':
+      'App to learn English by listening and speaking: placement test, personalized path, voice pronunciation practice and daily review. Installs on your phone.',
     'projects.dashboardrh':
       'HR KPI dashboard built with PO-UI, consuming Protheus data through REST.',
     'projects.invoice':
@@ -135,6 +176,30 @@ const translations: Record<Language, Record<string, string>> = {
     'projects.demo': 'View demo',
     'projects.source': 'Source',
     'projects.newTab': 'opens in a new tab',
+    'feat.car.badge': 'Personal project · Android Auto',
+    'feat.car.title': 'Car Videos.',
+    'feat.car.titleHighlight': 'No more “are we there yet?”.',
+    'feat.car.lead':
+      'The cartoons kids love, from Google Drive and YouTube, right on the car infotainment screen. You choose what goes in; they choose what to watch, with big buttons made for little fingers.',
+    'feat.car.b1': 'Only plays what parents approved: one Drive folder and one YouTube video list.',
+    'feat.car.b2':
+      'Car moving? The picture goes away and the sound keeps playing — it becomes a story radio.',
+    'feat.car.b3': 'Voice search: just ask for the cartoon.',
+    'feat.car.b4': 'Found a great video? Tap Share on YouTube and it shows up in the car.',
+    'feat.car.momentsLabel': 'Made for those minutes that feel like hours:',
+    'feat.car.m1': 'Drive-thru line',
+    'feat.car.m2': 'Waiting at school pickup',
+    'feat.car.m3': 'Road trip stop',
+    'feat.car.m4': 'Car wash',
+    'feat.car.cta': 'I want it in my car',
+    'feat.car.fineprint':
+      'For Android phones with Android Auto. Assisted install, outside the Play Store.',
+    'feat.car.whatsMessage':
+      'Hi Michel! I saw the Car Videos app in your portfolio and I want it in my car.',
+    'feat.car.audioOnly': 'Moving: audio only',
+    'feat.car.audioOnlySub': 'the story keeps playing',
+    'feat.car.stateStop': 'Parked · screen on',
+    'feat.car.stateGo': 'Driving · sound only',
     'exp.title': 'Experience',
     'exp.tcp.role': 'ADVPL Programmer',
     'exp.tcp.period': 'Current',
@@ -190,6 +255,9 @@ const translations: Record<Language, Record<string, string>> = {
     'projects.group.erp': 'Pantallas web para Protheus',
     'projects.group.erp.badge': 'ERP TOTVS Protheus',
     'projects.group.erp.desc': 'Reportes y dashboards en Angular + PO-UI que se ejecutan dentro de Protheus.',
+    'projects.group.own': 'Proyectos propios',
+    'projects.group.own.badge': 'Ideas mías',
+    'projects.group.own.desc': 'Apps que creé para resolver problemas míos y de quienes me rodean.',
     'projects.tag.demo': 'datos ficticios',
     'projects.memorial':
       'Sitio institucional con planes, servicios, galería del crematorio y atención directa por WhatsApp.',
@@ -201,6 +269,10 @@ const translations: Record<Language, Record<string, string>> = {
       'Plataforma para que funerarias publiquen memoriales online, con homenajes, velas virtuales, moderación y artes para imprimir.',
     'projects.zubartez':
       'Portafolio de ilustrador con estilo cartoon, presupuestos por WhatsApp y panel para que el artista publique sus propias obras.',
+    'projects.trilhas':
+      'Editor de clases en mapa mental: pegas el guion, organizas los temas en tarjetas con versículos e imágenes y publicas la ruta para presentar.',
+    'projects.english':
+      'App para aprender inglés escuchando y hablando: prueba de nivel, ruta personalizada, práctica de pronunciación por voz y repaso diario. Se instala en el celular.',
     'projects.dashboardrh':
       'Panel de indicadores de RRHH en PO-UI, consumiendo datos de Protheus vía REST.',
     'projects.invoice':
@@ -215,6 +287,31 @@ const translations: Record<Language, Record<string, string>> = {
     'projects.demo': 'Ver demo',
     'projects.source': 'Código',
     'projects.newTab': 'abre en una nueva pestaña',
+    'feat.car.badge': 'Proyecto propio · Android Auto',
+    'feat.car.title': 'Videos en el Auto.',
+    'feat.car.titleHighlight': 'Adiós al “¿ya llegamos?”.',
+    'feat.car.lead':
+      'Los dibujos que los niños aman, de Google Drive y YouTube, directo en la pantalla multimedia del auto. Tú eliges qué entra; ellos eligen qué ver, con botones grandes hechos para deditos.',
+    'feat.car.b1':
+      'Solo reproduce lo que los padres aprobaron: una carpeta de Drive y una lista de videos de YouTube.',
+    'feat.car.b2':
+      '¿El auto en marcha? La imagen desaparece y el sonido sigue: se vuelve una radio de cuentos.',
+    'feat.car.b3': 'Búsqueda por voz: solo pide el dibujo.',
+    'feat.car.b4': '¿Viste un video genial? Toca Compartir en YouTube y ya aparece en el auto.',
+    'feat.car.momentsLabel': 'Hecho para esos minutos que parecen horas:',
+    'feat.car.m1': 'Fila del autoservicio',
+    'feat.car.m2': 'Esperando la salida del colegio',
+    'feat.car.m3': 'Parada en la ruta',
+    'feat.car.m4': 'Lavado de autos',
+    'feat.car.cta': 'Lo quiero en mi auto',
+    'feat.car.fineprint':
+      'Para celulares Android con Android Auto. Instalación asistida, fuera de Play Store.',
+    'feat.car.whatsMessage':
+      '¡Hola Michel! Vi la app Videos en el Auto en tu portafolio y la quiero en mi auto.',
+    'feat.car.audioOnly': 'En marcha: solo audio',
+    'feat.car.audioOnlySub': 'el cuento sigue sonando',
+    'feat.car.stateStop': 'Detenido · pantalla activa',
+    'feat.car.stateGo': 'En marcha · solo sonido',
     'exp.title': 'Experiencia',
     'exp.tcp.role': 'Programador ADVPL',
     'exp.tcp.period': 'Actual',

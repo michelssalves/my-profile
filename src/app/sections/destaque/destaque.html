@@ -1,0 +1,62 @@
+<section id="destaque" class="feature tile" aria-labelledby="feature-title">
+  <div class="feature-copy">
+    <span class="feature-badge">
+      <span class="badge-dot" aria-hidden="true"></span>{{ i18n.t('feat.car.badge') }}
+    </span>
+    <h2 id="feature-title">
+      {{ i18n.t('feat.car.title') }}
+      <span class="gradient-text">{{ i18n.t('feat.car.titleHighlight') }}</span>
+    </h2>
+    <p class="feature-lead">{{ i18n.t('feat.car.lead') }}</p>
+
+    <ul class="benefits">
+      @for (key of benefits; track key) {
+        <li>{{ i18n.t(key) }}</li>
+      }
+    </ul>
+
+    <p class="moments-label">{{ i18n.t('feat.car.momentsLabel') }}</p>
+    <ul class="chips moments">
+      @for (key of moments; track key) {
+        <li>{{ i18n.t(key) }}</li>
+      }
+    </ul>
+
+    <div class="actions">
+      <a class="btn whats" [href]="wantLink()" target="_blank" rel="noopener">
+        {{ i18n.t('feat.car.cta') }}
+        <span class="sr-only">({{ i18n.t('projects.newTab') }})</span>
+      </a>
+    </div>
+    <p class="fineprint">{{ i18n.t('feat.car.fineprint') }}</p>
+  </div>
+
+  <!-- Central multimidia desenhada em CSS: alterna entre carro parado (video) e em movimento (so audio). -->
+  <div class="dash" aria-hidden="true">
+    <div class="screen">
+      <div class="screen-top">
+        <span class="tab active">Drive</span>
+        <span class="tab">YouTube</span>
+        <span class="clock">14:32</span>
+      </div>
+      <div class="grid">
+        @for (thumb of thumbs; track thumb.emoji) {
+          <span class="thumb" [attr.data-tone]="thumb.tone">{{ thumb.emoji }}</span>
+        }
+      </div>
+      <div class="audio-only">
+        <span class="notes">♪ ♫ ♪</span>
+        <strong>{{ i18n.t('feat.car.audioOnly') }}</strong>
+        <small>{{ i18n.t('feat.car.audioOnlySub') }}</small>
+      </div>
+    </div>
+    <div class="dash-base">
+      <span class="speed">
+        <b class="speed-stop">0</b><b class="speed-go">40</b>
+        km/h
+      </span>
+      <span class="state state-stop">{{ i18n.t('feat.car.stateStop') }}</span>
+      <span class="state state-go">{{ i18n.t('feat.car.stateGo') }}</span>
+    </div>
+  </div>
+</section>

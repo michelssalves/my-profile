@@ -8,6 +8,7 @@
       class="group"
       [class.group-erp]="group.category === 'erp'"
       [class.group-client]="group.category === 'client'"
+      [class.group-own]="group.category === 'own'"
       [attr.aria-labelledby]="'group-' + group.category"
     >
       <header class="group-head">

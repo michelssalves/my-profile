@@ -1,4 +1,4 @@
-﻿export type ProjectCategory = 'client' | 'erp';
+﻿export type ProjectCategory = 'client' | 'erp' | 'own';
 
 export interface Project {
   id: string;
@@ -67,6 +67,24 @@ export const PROJECTS: Project[] = [
     domain: 'zubartez.com.br',
     url: 'https://zubartez.com.br',
     stack: ['PHP', 'JavaScript', 'CSS']
+  },
+  {
+    id: 'trilhas',
+    image: 'projects/trilhas.webp',
+    name: 'Trilhas',
+    category: 'own',
+    domain: 'mapa-mental.gbxstrategy.com',
+    url: 'https://mapa-mental.gbxstrategy.com/login',
+    stack: ['React', 'React Flow', 'Zustand']
+  },
+  {
+    id: 'english',
+    image: 'projects/learning-english.webp',
+    name: 'Learning English',
+    category: 'own',
+    domain: 'learning-english.michelssalves.workers.dev',
+    url: 'https://learning-english.michelssalves.workers.dev/',
+    stack: ['React', 'Firebase', 'Web Speech', 'PWA']
   },
   {
     id: 'dashboardrh',

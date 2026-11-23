@@ -1,5 +1,6 @@
 ﻿import { Component, DestroyRef, afterNextRender, computed, inject, signal } from '@angular/core';
 import { Hero } from './sections/hero/hero';
+import { Destaque } from './sections/destaque/destaque';
 import { Sobre } from './sections/sobre/sobre';
 import { Projetos } from './sections/projetos/projetos';
 import { Contato } from './sections/contato/contato';
@@ -10,7 +11,7 @@ import { FxBackground } from './shared/fx-background';
 
 @Component({
   selector: 'app-root',
-  imports: [Hero, Projetos, Sobre, Contato, FxBackground, StackBubbles],
+  imports: [Hero, Destaque, Projetos, Sobre, Contato, FxBackground, StackBubbles],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
