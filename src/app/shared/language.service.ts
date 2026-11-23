@@ -30,10 +30,6 @@ const translations: Record<Language, Record<string, string>> = {
     'projects.group.erp': 'Telas web para o Protheus',
     'projects.group.erp.badge': 'ERP TOTVS Protheus',
     'projects.group.erp.desc': 'Relatórios e dashboards em Angular + PO-UI que rodam dentro do Protheus.',
-    'projects.group.own': 'Projetos próprios',
-    'projects.group.own.badge': 'Ideias minhas',
-    'projects.group.own.desc':
-      'Apps que criei para resolver problemas meus e de quem está por perto.',
     'projects.tag.demo': 'dados fictícios',
     'projects.memorial':
       'Site institucional com planos, serviços, galeria do crematório e atendimento direto pelo WhatsApp.',
@@ -45,12 +41,6 @@ const translations: Record<Language, Record<string, string>> = {
       'Plataforma para funerárias publicarem memoriais online, com homenagens, velas virtuais, moderação e artes para impressão.',
     'projects.zubartez':
       'Portfólio de ilustrador com visual cartoon, orçamento pelo WhatsApp e painel para o artista publicar as próprias obras.',
-    'projects.trilhas':
-      'Editor de aulas em mapa mental: cola o roteiro, organiza os tópicos em cards com versículos e imagens e publica a trilha para apresentar.',
-    'projects.english':
-      'App para aprender inglês ouvindo e falando: teste de nível, trilha personalizada, prática de pronúncia por voz e revisão diária. Instala no celular.',
-    'projects.bomba':
-      'Quiz bíblico com cronômetro de bomba, sons e pódio. Joga todo mundo na mesma tela ou cada um no próprio celular, por convite.',
     'projects.dashboardrh':
       'Painel de indicadores de RH em PO-UI, consumindo dados do Protheus via REST.',
     'projects.invoice':
@@ -111,6 +101,26 @@ const translations: Record<Language, Record<string, string>> = {
     'feat.trilhas.n2': 'Contexto',
     'feat.trilhas.n3': 'Exemplos',
     'feat.trilhas.n4': 'Aplicação',
+    'feat.margem.short': 'MargemHub',
+    'feat.margem.badge': 'Mercado Livre · Lucro de verdade',
+    'feat.margem.title': 'MargemHub.',
+    'feat.margem.titleHighlight': 'Pare de pagar para vender.',
+    'feat.margem.lead':
+      'Cada venda no Mercado Livre leva taxa, frete, promoção e imposto. O MargemHub faz essa conta anúncio por anúncio e mostra, na hora, onde você ganha e onde está perdendo dinheiro sem perceber. Controle total da lucratividade: mais ganho, menos prejuízo.',
+    'feat.margem.b1':
+      'Margem real de cada anúncio, já descontando taxa, frete, promoção e imposto.',
+    'feat.margem.b2': 'Filtro por margem mínima: os anúncios no prejuízo aparecem na hora.',
+    'feat.margem.b3':
+      'Catálogo com o custo e as medidas de cada produto, para a conta fechar certinho.',
+    'feat.margem.b4': 'Ajuste preço e anúncio direto no Mercado Livre, sem sair do painel.',
+    'feat.margem.cta': 'Quero controlar minhas margens',
+    'feat.margem.profit': 'Lucro do mês',
+    'feat.margem.p1': 'Fone Bluetooth',
+    'feat.margem.p2': 'Garrafa térmica',
+    'feat.margem.p3': 'Kit ferramentas',
+    'feat.margem.p4': 'Mochila notebook',
+    'feat.margem.alert': '1 anúncio vendendo no prejuízo',
+    'feat.margem.fixed': 'Preço ajustado: prejuízo virou lucro',
     'feat.english.short': 'Inglês',
     'feat.english.badge': 'Inglês todo dia',
     'feat.english.title': 'Learning English.',
@@ -136,6 +146,9 @@ const translations: Record<Language, Record<string, string>> = {
     'feat.bomba.b4': 'Cadastre, importe e exporte as suas próprias perguntas.',
     'feat.bomba.cta': 'Jogar agora',
     'feat.bomba.q': 'Quem construiu a arca?',
+    'feat.bomba.missLabel': 'Erros da rodada',
+    'feat.bomba.m1': 'Quantos dias choveu no dilúvio?',
+    'feat.bomba.m2': 'Quem derrotou Golias?',
     'feat.bomba.o1': 'Moisés',
     'feat.bomba.o2': 'Noé',
     'feat.bomba.o3': 'Davi',
@@ -195,10 +208,6 @@ const translations: Record<Language, Record<string, string>> = {
     'projects.group.erp': 'Web screens for Protheus',
     'projects.group.erp.badge': 'TOTVS Protheus ERP',
     'projects.group.erp.desc': 'Angular + PO-UI reports and dashboards that run inside Protheus.',
-    'projects.group.own': 'Personal projects',
-    'projects.group.own.badge': 'My own ideas',
-    'projects.group.own.desc':
-      'Apps I built to solve my own problems and those of people around me.',
     'projects.tag.demo': 'fictitious data',
     'projects.memorial':
       'Business website with plans, services, crematorium gallery and direct WhatsApp support.',
@@ -210,12 +219,6 @@ const translations: Record<Language, Record<string, string>> = {
       'Platform for funeral homes to publish online memorials, with tributes, virtual candles, moderation and printable artwork.',
     'projects.zubartez':
       'Illustrator portfolio with a cartoon look, quotes via WhatsApp and an admin panel for the artist to publish his own work.',
-    'projects.trilhas':
-      'Mind-map lesson editor: paste the script, organize topics into cards with verses and images, and publish the path to present.',
-    'projects.english':
-      'App to learn English by listening and speaking: placement test, personalized path, voice pronunciation practice and daily review. Installs on your phone.',
-    'projects.bomba':
-      'Bible quiz with a bomb timer, sounds and a podium. Everyone plays on the same screen or each on their own phone, by invite.',
     'projects.dashboardrh':
       'HR KPI dashboard built with PO-UI, consuming Protheus data through REST.',
     'projects.invoice':
@@ -276,6 +279,26 @@ const translations: Record<Language, Record<string, string>> = {
     'feat.trilhas.n2': 'Context',
     'feat.trilhas.n3': 'Examples',
     'feat.trilhas.n4': 'Takeaway',
+    'feat.margem.short': 'MargemHub',
+    'feat.margem.badge': 'Mercado Livre · Real profit',
+    'feat.margem.title': 'MargemHub.',
+    'feat.margem.titleHighlight': 'Stop paying to sell.',
+    'feat.margem.lead':
+      'Every sale on Mercado Livre carries fees, shipping, promotions and taxes. MargemHub does the math listing by listing and shows, right away, where you make money and where you are losing it without noticing. Full control of profitability: more gains, fewer losses.',
+    'feat.margem.b1': 'Real margin for every listing, after fees, shipping, promotions and taxes.',
+    'feat.margem.b2': 'Minimum-margin filter: listings selling at a loss show up instantly.',
+    'feat.margem.b3':
+      'Catalog with the cost and dimensions of each product, so the numbers add up.',
+    'feat.margem.b4':
+      'Adjust price and listing straight on Mercado Livre, without leaving the dashboard.',
+    'feat.margem.cta': 'Take control of my margins',
+    'feat.margem.profit': 'Monthly profit',
+    'feat.margem.p1': 'Bluetooth headset',
+    'feat.margem.p2': 'Thermal bottle',
+    'feat.margem.p3': 'Tool kit',
+    'feat.margem.p4': 'Laptop backpack',
+    'feat.margem.alert': '1 listing selling at a loss',
+    'feat.margem.fixed': 'Price adjusted: loss turned into profit',
     'feat.english.short': 'English',
     'feat.english.badge': 'English every day',
     'feat.english.title': 'Learning English.',
@@ -301,6 +324,9 @@ const translations: Record<Language, Record<string, string>> = {
     'feat.bomba.b4': 'Add, import and export your own questions.',
     'feat.bomba.cta': 'Play now',
     'feat.bomba.q': 'Who built the ark?',
+    'feat.bomba.missLabel': 'Missed this round',
+    'feat.bomba.m1': 'How many days did it rain in the flood?',
+    'feat.bomba.m2': 'Who defeated Goliath?',
     'feat.bomba.o1': 'Moses',
     'feat.bomba.o2': 'Noah',
     'feat.bomba.o3': 'David',
@@ -360,9 +386,6 @@ const translations: Record<Language, Record<string, string>> = {
     'projects.group.erp': 'Pantallas web para Protheus',
     'projects.group.erp.badge': 'ERP TOTVS Protheus',
     'projects.group.erp.desc': 'Reportes y dashboards en Angular + PO-UI que se ejecutan dentro de Protheus.',
-    'projects.group.own': 'Proyectos propios',
-    'projects.group.own.badge': 'Ideas mías',
-    'projects.group.own.desc': 'Apps que creé para resolver problemas míos y de quienes me rodean.',
     'projects.tag.demo': 'datos ficticios',
     'projects.memorial':
       'Sitio institucional con planes, servicios, galería del crematorio y atención directa por WhatsApp.',
@@ -374,12 +397,6 @@ const translations: Record<Language, Record<string, string>> = {
       'Plataforma para que funerarias publiquen memoriales online, con homenajes, velas virtuales, moderación y artes para imprimir.',
     'projects.zubartez':
       'Portafolio de ilustrador con estilo cartoon, presupuestos por WhatsApp y panel para que el artista publique sus propias obras.',
-    'projects.trilhas':
-      'Editor de clases en mapa mental: pegas el guion, organizas los temas en tarjetas con versículos e imágenes y publicas la ruta para presentar.',
-    'projects.english':
-      'App para aprender inglés escuchando y hablando: prueba de nivel, ruta personalizada, práctica de pronunciación por voz y repaso diario. Se instala en el celular.',
-    'projects.bomba':
-      'Quiz bíblico con cronómetro de bomba, sonidos y podio. Juegan todos en la misma pantalla o cada uno en su celular, por invitación.',
     'projects.dashboardrh':
       'Panel de indicadores de RRHH en PO-UI, consumiendo datos de Protheus vía REST.',
     'projects.invoice':
@@ -441,6 +458,27 @@ const translations: Record<Language, Record<string, string>> = {
     'feat.trilhas.n2': 'Contexto',
     'feat.trilhas.n3': 'Ejemplos',
     'feat.trilhas.n4': 'Aplicación',
+    'feat.margem.short': 'MargemHub',
+    'feat.margem.badge': 'Mercado Libre · Ganancia real',
+    'feat.margem.title': 'MargemHub.',
+    'feat.margem.titleHighlight': 'Deja de pagar por vender.',
+    'feat.margem.lead':
+      'Cada venta en Mercado Libre lleva comisión, envío, promoción e impuestos. MargemHub hace esa cuenta publicación por publicación y muestra al instante dónde ganas y dónde pierdes dinero sin darte cuenta. Control total de la rentabilidad: más ganancia, menos pérdida.',
+    'feat.margem.b1':
+      'Margen real de cada publicación, ya descontando comisión, envío, promoción e impuestos.',
+    'feat.margem.b2':
+      'Filtro por margen mínimo: las publicaciones con pérdida aparecen al instante.',
+    'feat.margem.b3':
+      'Catálogo con el costo y las medidas de cada producto, para que la cuenta cierre.',
+    'feat.margem.b4': 'Ajusta precio y publicación directo en Mercado Libre, sin salir del panel.',
+    'feat.margem.cta': 'Quiero controlar mis márgenes',
+    'feat.margem.profit': 'Ganancia del mes',
+    'feat.margem.p1': 'Auricular Bluetooth',
+    'feat.margem.p2': 'Botella térmica',
+    'feat.margem.p3': 'Kit de herramientas',
+    'feat.margem.p4': 'Mochila para notebook',
+    'feat.margem.alert': '1 publicación vendiendo con pérdida',
+    'feat.margem.fixed': 'Precio ajustado: la pérdida se volvió ganancia',
     'feat.english.short': 'Inglés',
     'feat.english.badge': 'Inglés todos los días',
     'feat.english.title': 'Learning English.',
@@ -466,6 +504,9 @@ const translations: Record<Language, Record<string, string>> = {
     'feat.bomba.b4': 'Registra, importa y exporta tus propias preguntas.',
     'feat.bomba.cta': 'Jugar ahora',
     'feat.bomba.q': '¿Quién construyó el arca?',
+    'feat.bomba.missLabel': 'Errores de la ronda',
+    'feat.bomba.m1': '¿Cuántos días llovió en el diluvio?',
+    'feat.bomba.m2': '¿Quién derrotó a Goliat?',
     'feat.bomba.o1': 'Moisés',
     'feat.bomba.o2': 'Noé',
     'feat.bomba.o3': 'David',

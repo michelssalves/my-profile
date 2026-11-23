@@ -2,7 +2,7 @@ import { Component, DestroyRef, afterNextRender, computed, inject, signal } from
 import { LanguageService } from '../../shared/language.service';
 import { whatsappUrl } from '../../shared/portfolio-data';
 
-type SlideId = 'car' | 'trilhas' | 'english' | 'bomba';
+type SlideId = 'car' | 'trilhas' | 'margem' | 'english' | 'bomba';
 
 interface Slide {
   id: SlideId;
@@ -24,12 +24,13 @@ export class Destaque {
   readonly carLink = computed(() => whatsappUrl(this.i18n.t('feat.car.whatsMessage')));
   readonly current = signal(0);
 
-  // O app do carro abre o carrossel: e o unico que vira pedido pelo WhatsApp; os outros levam ao site.
+  // O app do carro abre o carrossel (unico que vira pedido pelo WhatsApp) e o ingles fecha a fila.
   readonly slides: Slide[] = [
     { id: 'car', benefits: 4 },
     { id: 'trilhas', benefits: 4, url: 'https://mapa-mental.gbxstrategy.com/login' },
-    { id: 'english', benefits: 4, url: 'https://learning-english.michelssalves.workers.dev/' },
-    { id: 'bomba', benefits: 4, url: 'https://biblia-quiz.michelssalves.workers.dev/' }
+    { id: 'margem', benefits: 4, url: 'https://app.margemhub.com.br/' },
+    { id: 'bomba', benefits: 4, url: 'https://biblia-quiz.michelssalves.workers.dev/' },
+    { id: 'english', benefits: 4, url: 'https://learning-english.michelssalves.workers.dev/' }
   ];
 
   // Abas do app real (BrowserController.STREAMINGS + Drive e YouTube).
@@ -47,6 +48,13 @@ export class Destaque {
 
   readonly moments = ['feat.car.m1', 'feat.car.m2', 'feat.car.m3', 'feat.car.m4'];
   readonly mapNodes = ['feat.trilhas.n1', 'feat.trilhas.n2', 'feat.trilhas.n3', 'feat.trilhas.n4'];
+  readonly marginRows = [
+    { key: 'feat.margem.p1', value: '+18%', tone: 'good' },
+    { key: 'feat.margem.p2', value: '+9%', tone: 'warn' },
+    { key: 'feat.margem.p3', value: '', tone: 'flip' },
+    { key: 'feat.margem.p4', value: '+22%', tone: 'good' }
+  ];
+  readonly quizMisses = ['feat.bomba.q', 'feat.bomba.m1', 'feat.bomba.m2'];
   readonly quizOptions = ['feat.bomba.o1', 'feat.bomba.o2', 'feat.bomba.o3', 'feat.bomba.o4'];
 
   private readonly destroyRef = inject(DestroyRef);

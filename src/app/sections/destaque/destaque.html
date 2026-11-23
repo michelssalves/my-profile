@@ -115,6 +115,32 @@
                 }
               </div>
             }
+            @case ('margem') {
+              <!-- Painel de margens: o anuncio no prejuizo vira lucro depois do ajuste e o lucro do mes sobe. -->
+              <div class="visual margin" aria-hidden="true">
+                <div class="margin-head">
+                  <span>{{ i18n.t('feat.margem.profit') }}</span>
+                  <strong class="profit"><b class="p-before">R$ 8.940</b><b class="p-after">R$ 12.480 ↑</b></strong>
+                </div>
+                <ul class="margin-rows">
+                  @for (row of marginRows; track row.key) {
+                    <li [attr.data-tone]="row.tone">
+                      <span class="row-name">{{ i18n.t(row.key) }}</span>
+                      <span class="row-bar"><i></i></span>
+                      @if (row.tone === 'flip') {
+                        <span class="row-value flip"><b class="v-before">−4%</b><b class="v-after">+11%</b></span>
+                      } @else {
+                        <span class="row-value">{{ row.value }}</span>
+                      }
+                    </li>
+                  }
+                </ul>
+                <p class="margin-note">
+                  <span class="n-before">⚠ {{ i18n.t('feat.margem.alert') }}</span>
+                  <span class="n-after">✓ {{ i18n.t('feat.margem.fixed') }}</span>
+                </p>
+              </div>
+            }
             @case ('english') {
               <!-- Celular com a pratica de fala: pergunta, microfone ouvindo e acerto. -->
               <div class="visual phone" aria-hidden="true">
@@ -131,20 +157,28 @@
               </div>
             }
             @case ('bomba') {
-              <!-- Bomba com pavio aceso e a pergunta da vez; a resposta certa acende no fim do pavio. -->
+              <!-- Bomba com pavio aceso: o jogador erra a pergunta facil, a bomba explode e os erros vao se acumulando. -->
               <div class="visual quiz" aria-hidden="true">
                 <div class="bomb">
                   <span class="fuse"></span>
                   <span class="spark"></span>
-                  <span class="bomb-time"><b class="t1">10</b><b class="t2">5</b><b class="t3">!</b></span>
+                  <span class="bomb-time"><b class="t1">10</b><b class="t2">5</b><b class="t3">💥</b></span>
                 </div>
                 <div class="question">
                   <p>{{ i18n.t('feat.bomba.q') }}</p>
                   <ul>
                     @for (key of quizOptions; track key; let i = $index) {
-                      <li [class.right]="i === 1">{{ i18n.t(key) }}</li>
+                      <li [class.wrong]="i === 0" [class.right]="i === 1">{{ i18n.t(key) }}</li>
                     }
                   </ul>
+                </div>
+                <div class="misses">
+                  <span class="misses-label">{{ i18n.t('feat.bomba.missLabel') }}</span>
+                  <ol>
+                    @for (key of quizMisses; track key) {
+                      <li>✗ {{ i18n.t(key) }}</li>
+                    }
+                  </ol>
                 </div>
               </div>
             }

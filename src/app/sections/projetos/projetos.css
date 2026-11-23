@@ -5,15 +5,11 @@
   --erp-soft: rgba(63, 209, 187, 0.12);
   --site: var(--accent);
   --site-soft: var(--accent-soft);
-  --own: #ffb347;
-  --own-soft: rgba(255, 179, 71, 0.12);
 }
 
 :host-context(body.theme-light) {
   --erp: #0b7a6b;
   --erp-soft: rgba(11, 122, 107, 0.09);
-  --own: #b45309;
-  --own-soft: rgba(180, 83, 9, 0.09);
 }
 
 /* Cada grupo é um bloco próprio: borda e selo na cor do grupo, e espaço grande entre os dois. */
@@ -35,11 +31,6 @@
 .group-erp {
   --group: var(--erp);
   --group-soft: var(--erp-soft);
-}
-
-.group-own {
-  --group: var(--own);
-  --group-soft: var(--own-soft);
 }
 
 .group-head {
@@ -112,10 +103,6 @@
   background: rgba(31, 95, 191, 0.85);
 }
 
-.group-own .preview-tag {
-  background: rgba(180, 83, 9, 0.85);
-}
-
 .project {
   display: flex;
   flex-direction: column;
@@ -160,21 +147,6 @@
 .preview[data-project='mural'] {
   --tone-a: #5b4a6b;
   --tone-b: #221b2a;
-}
-
-.preview[data-project='trilhas'] {
-  --tone-a: #8a5a2c;
-  --tone-b: #2e1d0e;
-}
-
-.preview[data-project='english'] {
-  --tone-a: #4f46e5;
-  --tone-b: #1e1b4b;
-}
-
-.preview[data-project='bomba'] {
-  --tone-a: #7a3b2c;
-  --tone-b: #2a120c;
 }
 
 .preview[data-project='dashboardrh'] {

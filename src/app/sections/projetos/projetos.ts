@@ -20,7 +20,7 @@ interface ProjectGroup {
 export class Projetos {
   readonly i18n = inject(LanguageService);
 
-  // Protheus primeiro: é o foco profissional; os sites para clientes vêm depois, e por último os projetos próprios.
+  // Protheus primeiro: é o foco profissional; os sites para clientes vêm depois.
   readonly groups: ProjectGroup[] = [
     {
       category: 'erp',
@@ -37,14 +37,6 @@ export class Projetos {
       descKey: 'projects.group.client.desc',
       tagKey: 'projects.tag.live',
       items: PROJECTS.filter((project) => project.category === 'client')
-    },
-    {
-      category: 'own',
-      badgeKey: 'projects.group.own.badge',
-      titleKey: 'projects.group.own',
-      descKey: 'projects.group.own.desc',
-      tagKey: 'projects.tag.live',
-      items: PROJECTS.filter((project) => project.category === 'own')
     }
   ];
 }
